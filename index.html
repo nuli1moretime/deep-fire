@@ -1,10 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>DeepFire</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepFire | 燃烧与人工智能 - 中国科大谢启源团队</title>
+    <!-- 引入 Tailwind CSS 框架 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入动态粒子特效库 -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <style>
+        /* 基础页面样式 */
+        body { background-color: #0b1120; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        /* 将粒子画布置于底层 */
+        #tsparticles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        /* 玻璃质感卡片特效 */
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        /* 文字渐变特效 */
+        .text-gradient-fire { background: linear-gradient(135deg, #fb923c, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-ai { background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
 </head>
-<body>
-    <h1>Hello, DeepFire!</h1>
-    <p>This is my new website.</p>
+<body class="relative min-h-screen overflow-x-hidden selection:bg-orange-500 selection:text-white">
+    <!-- 动态粒子背景 -->
+    <div id="tsparticles"></div>
+
+    <!-- 顶部导航栏 -->
+    <nav class="w-full p-6 flex justify-between items-center relative z-10 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-widest text-white">
+            DEEP<span class="text-orange-500">FIRE</span><span class="text-xs text-slate-400 tracking-normal ml-2 font-normal">Lab</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+            <a href="#home" class="hover:text-orange-400 transition">首页</a>
+            <a href="#about" class="hover:text-orange-400 transition">关于我们</a>
+            <a href="#research" class="hover:text-orange-400 transition">研究方向</a>
+        </div>
+    </nav>
+
+    <!-- 主视觉区 (Hero Section) -->
+    <main id="home" class="flex flex-col items-center justify-center min-h-[75vh] text-center px-4 relative z-10 max-w-5xl mx-auto">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight leading-tight">
+            当 <span class="text-gradient-fire">燃烧科学</span> <br class="md:hidden"/>
+            遇上 <span class="text-gradient-ai">人工智能</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mb-12 leading-relaxed">
+            探索工程热物理的未来边界。我们致力于将深度学习与先进统计理论深度融合，利用物理信息神经网络 (PINN) 重塑火灾动力学预测与工业系统模拟。
+        </p>
+        <a href="#about" class="px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 rounded-full font-bold text-lg hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] transition transform hover:-translate-y-1">
+            探索我们的工作
+        </a>
+    </main>
+
+    <!-- 关于我们 (About Section) -->
+    <section id="about" class="py-20 px-4 relative z-10 max-w-6xl mx-auto">
+        <div class="glass-card rounded-3xl p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 shadow-2xl">
+            <div class="flex-1">
+                <div class="inline-block px-3 py-1 mb-4 rounded-full border border-orange-500/30 text-orange-400 text-sm font-semibold tracking-wide">
+                    WHO WE ARE
+                </div>
+                <h2 class="text-4xl font-bold mb-4 text-white">中国科学技术大学</h2>
+                <h3 class="text-2xl text-slate-300 mb-8 border-b border-slate-700 pb-6">谢启源教授团队</h3>
+                
+                <div class="space-y-6 text-slate-400 leading-relaxed">
+                    <p>
+                        我们是一支交叉学科的先锋课题组，汇聚了数据科学的敏锐洞察力与安全工程的深厚底蕴。依托中国科学技术大学顶尖的科研平台，我们正致力于打破传统学科壁垒。
+                    </p>
+                    <p>
+                        通过构建底层的高效数据库架构（如基于 MongoDB 的多源实验数据中台），并结合前沿的科学机器学习（Scientific Machine Learning）算法，我们将复杂的三维热传导问题与流体仿真转化为高效的数据驱动模型。从基础算法到工业落地，我们正在为智能安全与能源利用打造真正的 "Deep Fire" 引擎。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 视觉元素模块 -->
+            <div class="w-full md:w-1/3 grid grid-cols-2 gap-4">
+                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center transform translate-y-4">
+                    <span class="text-4xl mb-2">🔥</span>
+                    <span class="text-sm font-bold text-slate-300">安全工程与<br/>热物理</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+                    <span class="text-4xl mb-2">🧠</span>
+                    <span class="text-sm font-bold text-slate-300">PINN &<br/>深度学习</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center">
+                    <span class="text-4xl mb-2">📊</span>
+                    <span class="text-sm font-bold text-slate-300">多模态实验<br/>数据库</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center transform -translate-y-4">
+                    <span class="text-4xl mb-2">⚡</span>
+                    <span class="text-sm font-bold text-slate-300">系统仿真与<br/>模型评估</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 粒子系统配置脚本 -->
+    <script>
+        tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: ["#fb923c", "#ef4444", "#38bdf8", "#818cf8"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.7, random: true },
+                size: { value: 3, random: true },
+                links: { 
+                    enable: true, 
+                    distance: 150, 
+                    color: "#64748b", 
+                    opacity: 0.3, 
+                    width: 1 
+                },
+                move: { 
+                    enable: true, 
+                    speed: 1.5, 
+                    direction: "none", 
+                    random: true, 
+                    outModes: "bounce" 
+                }
+            },
+            interactivity: {
+                events: { 
+                    onHover: { enable: true, mode: "grab" }, 
+                    onClick: { enable: true, mode: "push" } 
+                },
+                modes: { 
+                    grab: { distance: 180, links: { opacity: 0.8 } }, 
+                    push: { quantity: 3 } 
+                }
+            }
+        });
+    </script>
 </body>
 </html>
