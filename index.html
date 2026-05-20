@@ -3,131 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepFire | 燃烧与人工智能 - 中国科大谢启源团队</title>
-    <!-- 引入 Tailwind CSS 框架 -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入动态粒子特效库 -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-    <style>
-        /* 基础页面样式 */
-        body { background-color: #0b1120; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-        /* 将粒子画布置于底层 */
-        #tsparticles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        /* 玻璃质感卡片特效 */
-        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        /* 文字渐变特效 */
-        .text-gradient-fire { background: linear-gradient(135deg, #fb923c, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .text-gradient-ai { background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
+    <title>AI + Combustion Lab | 课题组主页</title>
+    <!-- 引入外部样式表 -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="relative min-h-screen overflow-x-hidden selection:bg-orange-500 selection:text-white">
-    <!-- 动态粒子背景 -->
-    <div id="tsparticles"></div>
+<body>
 
-    <!-- 顶部导航栏 -->
-    <nav class="w-full p-6 flex justify-between items-center relative z-10 max-w-7xl mx-auto">
-        <div class="text-2xl font-black tracking-widest text-white">
-            DEEP<span class="text-orange-500">FIRE</span><span class="text-xs text-slate-400 tracking-normal ml-2 font-normal">Lab</span>
+    <!-- 导航栏 -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">AI + <span>Combustion</span></div>
+            <nav>
+                <a href="#about">团队简介</a>
+                <a href="#news">新闻动态</a>
+                <a href="#members">成员介绍</a>
+                <a href="#papers">发表论文</a>
+                <a href="#join">招生计划</a>
+            </nav>
         </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-            <a href="#home" class="hover:text-orange-400 transition">首页</a>
-            <a href="#about" class="hover:text-orange-400 transition">关于我们</a>
-            <a href="#research" class="hover:text-orange-400 transition">研究方向</a>
+    </header>
+
+    <!-- Hero 欢迎区域 -->
+    <section id="hero">
+        <div class="section-container">
+            <!-- 装饰性光晕背景，模拟燃烧核心 -->
+            <div class="glow-sphere"></div>
+            <h1 class="fade-in">用人工智能<br><span class="gradient-text">重构燃烧科学。</span></h1>
+            <p class="fade-in-delay">我们致力于将深度学习、物理驱动神经网络（PINN）与先进燃烧数值模拟相结合，探索下一代高效、清洁的能源转化与安全防控技术。</p>
+            <a href="#about" class="btn-primary fade-in-delay">探索前沿</a>
         </div>
-    </nav>
+    </section>
 
-    <!-- 主视觉区 (Hero Section) -->
-    <main id="home" class="flex flex-col items-center justify-center min-h-[75vh] text-center px-4 relative z-10 max-w-5xl mx-auto">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight leading-tight">
-            当 <span class="text-gradient-fire">燃烧科学</span> <br class="md:hidden"/>
-            遇上 <span class="text-gradient-ai">人工智能</span>
-        </h1>
-        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mb-12 leading-relaxed">
-            探索工程热物理的未来边界。我们致力于将深度学习与先进统计理论深度融合，利用物理信息神经网络 (PINN) 重塑火灾动力学预测与工业系统模拟。
-        </p>
-        <a href="#about" class="px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 rounded-full font-bold text-lg hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] transition transform hover:-translate-y-1">
-            探索我们的工作
-        </a>
-    </main>
+    <!-- 团队简介 -->
+    <section id="about">
+        <div class="section-container">
+            <h2 class="section-title">团队简介</h2>
+            <p class="about-text">
+                本课题组聚焦于“AI + 燃烧科学”的前沿交叉研究。传统燃烧科学依赖于复杂的化学动力学与高昂的计算流体力学（CFD）模拟。我们通过引入先进的 AI 算法（如算子网络、流场预测等），打破传统计算瓶颈，实现对复杂燃烧动力学、火焰传播及工程热物理问题的快速、高精度建模与智能优化。
+            </p>
+        </div>
+    </section>
 
-    <!-- 关于我们 (About Section) -->
-    <section id="about" class="py-20 px-4 relative z-10 max-w-6xl mx-auto">
-        <div class="glass-card rounded-3xl p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 shadow-2xl">
-            <div class="flex-1">
-                <div class="inline-block px-3 py-1 mb-4 rounded-full border border-orange-500/30 text-orange-400 text-sm font-semibold tracking-wide">
-                    WHO WE ARE
+    <!-- 课题组新闻 -->
+    <section id="news">
+        <div class="section-container">
+            <h2 class="section-title">新闻动态</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">2026.05.10</div>
+                    <h4>物理驱动神经网络（PINN）三维热传导研究被顶级期刊接收</h4>
+                    <p class="news-desc">通过引入空间几何对称性先验，成功将三维瞬态火灾流场预测速度提升三个数量级。</p>
                 </div>
-                <h2 class="text-4xl font-bold mb-4 text-white">中国科学技术大学</h2>
-                <h3 class="text-2xl text-slate-300 mb-8 border-b border-slate-700 pb-6">谢启源教授团队</h3>
-                
-                <div class="space-y-6 text-slate-400 leading-relaxed">
-                    <p>
-                        我们是一支交叉学科的先锋课题组，汇聚了数据科学的敏锐洞察力与安全工程的深厚底蕴。依托中国科学技术大学顶尖的科研平台，我们正致力于打破传统学科壁垒。
-                    </p>
-                    <p>
-                        通过构建底层的高效数据库架构（如基于 MongoDB 的多源实验数据中台），并结合前沿的科学机器学习（Scientific Machine Learning）算法，我们将复杂的三维热传导问题与流体仿真转化为高效的数据驱动模型。从基础算法到工业落地，我们正在为智能安全与能源利用打造真正的 "Deep Fire" 引擎。
-                    </p>
+                <div class="news-card">
+                    <div class="news-date">2026.04.15</div>
+                    <h4>祝贺组内硕士研究生获得优秀毕业论文荣誉</h4>
+                    <p class="news-desc">其毕业设计探讨了基于傅里叶算子网络（FNO）的垂直电缆燃烧数值加速算法。</p>
                 </div>
-            </div>
-            
-            <!-- 视觉元素模块 -->
-            <div class="w-full md:w-1/3 grid grid-cols-2 gap-4">
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center transform translate-y-4">
-                    <span class="text-4xl mb-2">🔥</span>
-                    <span class="text-sm font-bold text-slate-300">安全工程与<br/>热物理</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center">
-                    <span class="text-4xl mb-2">🧠</span>
-                    <span class="text-sm font-bold text-slate-300">PINN &<br/>深度学习</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center">
-                    <span class="text-4xl mb-2">📊</span>
-                    <span class="text-sm font-bold text-slate-300">多模态实验<br/>数据库</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center transform -translate-y-4">
-                    <span class="text-4xl mb-2">⚡</span>
-                    <span class="text-sm font-bold text-slate-300">系统仿真与<br/>模型评估</span>
+                <div class="news-card">
+                    <div class="news-date">2026.03.01</div>
+                    <h4>课题组成功承办 AI 时代的工程热物理青年学者学术沙龙</h4>
+                    <p class="news-desc">来自全球 20 余所高校的专家学者齐聚，共同探讨深度学习在燃烧动力学中的应用。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 粒子系统配置脚本 -->
-    <script>
-        tsParticles.load("tsparticles", {
-            fpsLimit: 60,
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
-                color: { value: ["#fb923c", "#ef4444", "#38bdf8", "#818cf8"] },
-                shape: { type: "circle" },
-                opacity: { value: 0.7, random: true },
-                size: { value: 3, random: true },
-                links: { 
-                    enable: true, 
-                    distance: 150, 
-                    color: "#64748b", 
-                    opacity: 0.3, 
-                    width: 1 
-                },
-                move: { 
-                    enable: true, 
-                    speed: 1.5, 
-                    direction: "none", 
-                    random: true, 
-                    outModes: "bounce" 
-                }
-            },
-            interactivity: {
-                events: { 
-                    onHover: { enable: true, mode: "grab" }, 
-                    onClick: { enable: true, mode: "push" } 
-                },
-                modes: { 
-                    grab: { distance: 180, links: { opacity: 0.8 } }, 
-                    push: { quantity: 3 } 
-                }
-            }
-        });
-    </script>
+    <!-- 成员介绍 -->
+    <section id="members">
+        <div class="section-container">
+            <h2 class="section-title">成员介绍</h2>
+            
+            <!-- 1. 导师专区（左右质感结构） -->
+            <div class="pi-section">
+                <div class="pi-card">
+                    <div class="pi-avatar-box">
+                        <div class="member-avatar"></div>
+                    </div>
+                    <div class="pi-info">
+                        <div class="pi-tag">Principal Investigator</div>
+                        <h3>导师姓名</h3>
+                        <p class="pi-title">教授 / 博士生导师</p>
+                        <p class="pi-bio">主要研究方向为物理驱动深度学习、三维瞬态火灾流场预测及工程热物理智能优化。主持多项国家级科研项目，在 Combustion and Flame 等顶级期刊发表论文数十篇。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. 博士研究生专区 -->
+            <div class="student-tier">
+                <h3 class="tier-title"><span>/</span> 博士研究生</h3>
+                <div class="member-grid">
+                    <div class="member-card">
+                        <div class="member-avatar-box"><div class="member-avatar"></div></div>
+                        <h4>成员 A</h4>
+                        <p class="member-title">2024级 博士生</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar-box"><div class="member-avatar"></div></div>
+                        <h4>成员 B</h4>
+                        <p class="member-title">2025级 博士生</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 硕士研究生专区（4 人自适应网格） -->
+            <div class="student-tier">
+                <h3 class="tier-title"><span>/</span> 硕士研究生</h3>
+                <div class="member-grid">
+                    <div class="member-card">
+                        <div class="member-avatar-box"><div class="member-avatar"></div></div>
+                        <h4>成员 C</h4>
+                        <p class="member-title">2024级 硕士生</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar-box"><div class="member-avatar"></div></div>
+                        <h4>成员 D</h4>
+                        <p class="member-title">2024级 硕士生</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar-box"><div class="member-avatar"></div></div>
+                        <h4>成员 E</h4>
+                        <p class="member-title">2025级 硕士生</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar-box"><div class="member-avatar"></div></div>
+                        <h4>成员 F</h4>
+                        <p class="member-title">2025级 硕士生</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 发表论文 -->
+    <section id="papers">
+        <div class="section-container">
+            <h2 class="section-title">发表论文</h2>
+            <ul class="paper-list">
+                <li class="paper-item">
+                    <div class="paper-tags">Combustion and Flame • 2026</div>
+                    <p class="paper-title-text">Physics-Informed Neural Operators for Predicting 3D Unsteady Turbulent Flame Propagation</p>
+                    <p class="paper-authors">San Zhang, Si Li, Professor Name*</p>
+                    <div class="paper-links">
+                        <a href="#" class="paper-link-btn">[PDF]</a>
+                        <a href="#" class="paper-link-btn">[Code]</a>
+                        <a href="#" class="paper-link-btn">[DOI]</a>
+                    </div>
+                </li>
+                <li class="paper-item">
+                    <div class="paper-tags">Proceedings of the Combustion Institute • 2025</div>
+                    <p class="paper-title-text">Deep Learning-Based Accelerated Chemistry Solver for Confined Space Fire Simulations</p>
+                    <p class="paper-authors">Si Li, San Zhang, Professor Name*</p>
+                    <div class="paper-links">
+                        <a href="#" class="paper-link-btn">[PDF]</a>
+                        <a href="#" class="paper-link-btn">[Publisher Site]</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 招生计划 -->
+    <section id="join">
+        <div class="section-container">
+            <div class="join-box">
+                <div class="join-glow"></div>
+                <h3>期待你的加入</h3>
+                <p>课题组每年招收博士研究生 1-2 名，硕士研究生 2-3 名。欢迎具有工程热物理、安全工程、计算机科学、应用数学等背景的同学联系报考。</p>
+                <p class="join-dir"><strong>核心研究方向：</strong> 物理驱动深度学习（PINN/FNO）、复杂动力学高效燃烧模拟、火灾安全智能防控。</p>
+                <p class="contact-info">联系方式：pi_email@university.edu.cn (邮件请附带个人简历及成绩单)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2026 AI + Combustion Lab. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 引入外部脚本 -->
+    <script src="script.js"></script>
 </body>
 </html>
