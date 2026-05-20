@@ -2,13 +2,13 @@
    1. 变量声明与极客暗黑基调
    ========================================================================== */
 :root {
-    --bg-color: #0a0a0c;       /* 深邃冷黑底色 */
-    --bg-card: #121216;        /* 稍微亮一点的卡片灰黑 */
-    --text-main: #f3f4f6;      /* 高亮白字 */
-    --text-muted: #9ca3af;     /* 哑光灰字 */
+    --bg-color: #060608;       /* 稍微加深底色，让光晕更明显 */
+    --bg-card: #111115;        
+    --text-main: #f3f4f6;      
+    --text-muted: #9ca3af;     
     --accent-ai: #3b82f6;      /* 激光蓝 */
     --accent-fire: #ff4d20;    /* 烈焰橙红 */
-    --border-color: #222227;   /* 微弱的深色分割线 */
+    --border-color: #1f1f25;   
 }
 
 * {
@@ -23,11 +23,12 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
-    /* 点阵微纹理背景，模拟计算网格 */
+    
+    /* 强化1：大幅提升计算网格底纹的可见度，使其呈现出清晰的硬核数值采样网格 */
     background-image: 
-        radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 0),
-        radial-gradient(rgba(255, 90, 54, 0.008) 2px, transparent 0);
-    background-size: 24px 24px, 48px 48px;
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 30px 30px; /* 30x30像素的CFD计算网格 */
 }
 
 /* ==========================================================================
@@ -131,24 +132,45 @@ section {
     align-items: center;
     position: relative;
     overflow: hidden;
+    /* 在首屏后方追加一层横向的冷热对流渐变，打破大面积死黑 */
+    background: radial-gradient(circle at 70% 50%, rgba(59, 130, 246, 0.04) 0%, transparent 50%);
 }
 
+/* 右侧核心：模拟高温等离子体/AI化学反应流场的气氛光球 */
 .glow-sphere {
     position: absolute;
-    right: -10%;
-    top: 15%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(255, 77, 32, 0.08) 0%, rgba(59, 130, 246, 0.03) 50%, transparent 70%);
-    filter: blur(40px);
-    animation: rotateGlow 20s infinite linear;
+    right: -5%;
+    top: 10%;
+    width: 650px;
+    height: 650px;
+    /* 提高不透明度，让橙色（燃烧）与蓝色（AI）的对流碰撞深度显影 */
+    background: radial-gradient(
+        circle, 
+        rgba(255, 77, 32, 0.15) 0%, 
+        rgba(59, 130, 246, 0.08) 40%, 
+        transparent 70%
+    );
+    /* 引入流体前沿的不规则扭曲变形（Boric Shape），模拟火焰跳动 */
+    border-radius: 41% 59% 40% 60% / 55% 45% 55% 45%;
+    filter: blur(50px);
+    animation: fluidFlow 12s infinite alternate ease-in-out;
     z-index: -1;
 }
 
-@keyframes rotateGlow {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.1); }
-    100% { transform: rotate(360deg) scale(1); }
+/* 模拟燃烧流场的非线性动态蠕动动画 */
+@keyframes fluidFlow {
+    0% { 
+        transform: scale(1) rotate(0deg); 
+        border-radius: 41% 59% 40% 60% / 55% 45% 55% 45%; 
+    }
+    50% {
+        transform: scale(1.15) translate(-20px, 10px);
+        background: radial-gradient(circle, rgba(255, 77, 32, 0.18) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 70%);
+    }
+    100% { 
+        transform: scale(0.95) rotate(90deg); 
+        border-radius: 65% 35% 60% 40% / 40% 60% 40% 60%; 
+    }
 }
 
 .gradient-text {
