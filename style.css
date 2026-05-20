@@ -2,7 +2,7 @@
    1. 变量声明与极客暗黑基调
    ========================================================================== */
 :root {
-    --bg-color: #060608;       /* 稍微加深底色，让光晕更明显 */
+    --bg-color: #060608;       
     --bg-card: #111115;        
     --text-main: #f3f4f6;      
     --text-muted: #9ca3af;     
@@ -24,11 +24,11 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     
-    /* 强化1：大幅提升计算网格底纹的可见度，使其呈现出清晰的硬核数值采样网格 */
+    /* 依然保留数值采样网格，但改用透明度更低的颜色，减少渲染压力 */
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 30px 30px; /* 30x30像素的CFD计算网格 */
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 30px 30px;
 }
 
 /* ==========================================================================
@@ -80,7 +80,7 @@ nav a:hover, nav a.active {
 }
 
 /* ==========================================================================
-   3. 通用区块结构与交错背景
+   3. 通用区块结构
    ========================================================================== */
 section {
     padding: 9rem 0 6rem 0;
@@ -93,6 +93,7 @@ section {
     padding: 0 2rem;
 }
 
+/* 交错背景层级 */
 #news, #papers {
     background: rgba(18, 18, 22, 0.4);
     border-top: 1px solid var(--border-color);
@@ -124,7 +125,7 @@ section {
 }
 
 /* ==========================================================================
-   4. Hero 区（复杂流场气候光斑）
+   4. Hero 区（高能流体火焰核心）
    ========================================================================== */
 #hero {
     height: 95vh;
@@ -132,44 +133,85 @@ section {
     align-items: center;
     position: relative;
     overflow: hidden;
-    /* 在首屏后方追加一层横向的冷热对流渐变，打破大面积死黑 */
     background: radial-gradient(circle at 70% 50%, rgba(59, 130, 246, 0.04) 0%, transparent 50%);
 }
 
-/* 右侧核心：模拟高温等离子体/AI化学反应流场的气氛光球 */
+.glow-scheme-container {
+    /* 基础包裹环境保持纯净 */
+}
+
 .glow-sphere {
     position: absolute;
-    right: -5%;
-    top: 10%;
-    width: 650px;
-    height: 650px;
-    /* 提高不透明度，让橙色（燃烧）与蓝色（AI）的对流碰撞深度显影 */
+    right: 5%;
+    top: 5%;
+    width: 600px;
+    height: 600px;
+    
+    /* 核心超高对比度撞色 */
     background: radial-gradient(
         circle, 
-        rgba(255, 77, 32, 0.15) 0%, 
-        rgba(59, 130, 246, 0.08) 40%, 
-        transparent 70%
+        rgba(255, 77, 32, 0.45) 0%,    /* 高温烈焰橙核心 */
+        rgba(255, 77, 32, 0.22) 20%,   
+        rgba(59, 130, 246, 0.25) 45%,  /* AI 激光蓝对流区 */
+        rgba(59, 130, 246, 0.02) 65%,
+        transparent 75%
     );
-    /* 引入流体前沿的不规则扭曲变形（Boric Shape），模拟火焰跳动 */
-    border-radius: 41% 59% 40% 60% / 55% 45% 55% 45%;
-    filter: blur(50px);
-    animation: fluidFlow 12s infinite alternate ease-in-out;
+    
+    transform: translate3d(0, 0, 0) scale(1);
+    will-change: transform;
+    border-radius: 50%; 
+    
+    /* 🔴 主光斑走非线性“8”字气旋，周期 7 秒 */
+    animation: fluidFlowOne 28s infinite linear; 
     z-index: -1;
 }
 
-/* 模拟燃烧流场的非线性动态蠕动动画 */
-@keyframes fluidFlow {
-    0% { 
-        transform: scale(1) rotate(0deg); 
-        border-radius: 41% 59% 40% 60% / 55% 45% 55% 45%; 
+/* 🔴 第二个光斑：稍微缩小，颜色微调，走相反的逆时针路径，周期 5.5 秒，形成时间差 */
+.glow-sphere.two {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+        circle, 
+        rgba(59, 130, 246, 0.35) 0%,   /* 这个光斑以 AI 蓝为主核心 */
+        rgba(59, 130, 246, 0.15) 30%,   
+        rgba(255, 77, 32, 0.20) 50%,   /* 外围带橙色边缘 */
+        transparent 70%
+    );
+    top: 15%;
+    right: 0%;
+    animation: fluidFlowTwo 22s infinite linear;
+}
+
+/* 主光斑：顺时针大范围斜向“8”字气旋运动（涵盖大范围横移） */
+@keyframes fluidFlowOne {
+    0% {
+        transform: translate3d(40px, -20px, 0) scale(0.9) rotate(0deg);
+    }
+    33% {
+        /* 猛烈向左下方拉扯，体积急剧膨胀，模拟热对流喷射 */
+        transform: translate3d(-160px, 60px, 0) scale(1.35) rotate(120deg);
+    }
+    66% {
+        /* 折返向右上方漂移，完成圆弧轨迹 */
+        transform: translate3d(90px, -50px, 0) scale(0.9) rotate(240deg);
+    }
+    100% {
+        /* 回归原点 */
+        transform: translate3d(40px, -20px, 0) scale(0.9) rotate(360deg);
+    }
+}
+
+/* 副光斑：逆时针椭圆错位对流（错开主光斑的动作，负责在中央撕裂相融） */
+@keyframes fluidFlowTwo {
+    0% {
+        transform: translate3d(-60px, 40px, 0) scale(1.2) rotate(360deg);
     }
     50% {
-        transform: scale(1.15) translate(-20px, 10px);
-        background: radial-gradient(circle, rgba(255, 77, 32, 0.18) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 70%);
+        /* 横向向右大范围推移，体积压缩，形成冷热流场挤压质感 */
+        transform: translate3d(150px, -40px, 0) scale(0.8) rotate(180deg);
     }
-    100% { 
-        transform: scale(0.95) rotate(90deg); 
-        border-radius: 65% 35% 60% 40% / 40% 60% 40% 60%; 
+    100% {
+        transform: translate3d(-60px, 40px, 0) scale(1.2) rotate(0deg);
     }
 }
 
@@ -212,7 +254,7 @@ section {
 }
 
 /* ==========================================================================
-   5. 课题组新闻板块
+   5. 悬浮发光新闻卡片
    ========================================================================== */
 .news-grid {
     display: grid;
@@ -231,7 +273,7 @@ section {
 .news-card:hover {
     transform: translateY(-6px);
     border-color: rgba(255, 77, 32, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 77, 32, 0.03);
 }
 
 .news-date {
@@ -254,121 +296,36 @@ section {
 }
 
 /* ==========================================================================
-   6. 优化后的学术层级成员阶梯样式
+   6. 工业风成员板块
    ========================================================================== */
-.pi-section {
-    margin-bottom: 4rem;
-    width: 100%;
-}
-
-.pi-card {
-    background: linear-gradient(135deg, #141419 0%, #111115 100%);
-    border: 1px solid rgba(255, 77, 32, 0.15);
-    border-radius: 16px;
-    padding: 3.5rem;
-    display: flex;
-    gap: 3.5rem;
-    align-items: center;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    transition: all 0.4s ease;
-}
-
-.pi-card:hover {
-    border-color: var(--accent-fire);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 77, 32, 0.05);
-}
-
-.pi-card .pi-avatar-box {
-    width: 180px;
-    height: 180px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    padding: 4px;
-    background: linear-gradient(135deg, var(--accent-fire), transparent);
-}
-
-.pi-info {
-    flex-grow: 1;
-}
-
-.pi-tag {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--accent-fire);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.pi-info h3 {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 0.25rem;
-}
-
-.pi-title {
-    font-size: 1.05rem;
-    color: #fff;
-    opacity: 0.9;
-    margin-bottom: 1.2rem;
-}
-
-.pi-bio {
-    color: var(--text-muted);
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 700px;
-}
-
-.student-tier {
-    margin-top: 3.5rem;
-}
-
-.tier-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 1.8rem;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.tier-title span {
-    color: var(--accent-ai);
-    font-weight: 800;
-}
-
 .member-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem;
 }
 
 .member-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 2.2rem 1.5rem;
+    padding: 3rem 2rem;
     border-radius: 12px;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
 }
 
 .member-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: var(--accent-ai);
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.05);
 }
 
 .member-avatar-box {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 1.2rem auto;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem auto;
     position: relative;
+    /* 给头像加一圈极具AI感的微弱荧光蓝边框 */
     border-radius: 50%;
-    padding: 2px;
+    padding: 3px;
     background: linear-gradient(135deg, var(--border-color), transparent);
 }
 
@@ -379,24 +336,18 @@ section {
 .member-avatar {
     width: 100%;
     height: 100%;
-    background: #191920;
+    background: #1e1e24;
     border-radius: 50%;
-}
-
-.member-card h4 {
-    font-size: 1.1rem;
-    color: #fff;
-    font-weight: 600;
 }
 
 .member-title {
     color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
 }
 
 /* ==========================================================================
-   7. 发表论文板块
+   7. 学术论文（暗黑仪表盘边界）
    ========================================================================== */
 .paper-list {
     list-style: none;
@@ -450,6 +401,7 @@ section {
     color: var(--accent-ai);
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.2s;
 }
 
 .paper-link-btn:hover {
@@ -458,7 +410,7 @@ section {
 }
 
 /* ==========================================================================
-   8. 招生计划与页脚
+   8. 招生计划（高能聚变仓卡片）
    ========================================================================== */
 .join-box {
     background: radial-gradient(circle at top left, #161620, #0a0a0c);
@@ -470,6 +422,7 @@ section {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
+/* 内部霓虹边缘线 */
 .join-box::before {
     content: '';
     position: absolute;
@@ -477,11 +430,33 @@ section {
     background: linear-gradient(90deg, var(--accent-ai), var(--accent-fire));
 }
 
-.join-box h3 { font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 700; }
-.join-box p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem; }
-.join-dir { padding-left: 1rem; border-left: 2px solid var(--accent-ai); }
-.contact-info { margin-top: 2rem; font-size: 1rem; color: #fff; font-weight: 500; }
+.join-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
 
+.join-box p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.join-dir {
+    padding-left: 1rem;
+    border-left: 2px solid var(--accent-ai);
+}
+
+.contact-info {
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   9. 页脚与入场动效
+   ========================================================================== */
 footer {
     text-align: center;
     padding: 4rem;
@@ -490,18 +465,176 @@ footer {
     font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   9. 动效与屏幕适配
-   ========================================================================== */
-.fade-in { animation: fadeIn cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards; }
-.fade-in-delay { opacity: 0; animation: fadeIn cubic-bezier(0.16, 1, 0.3, 1) 1.5s 0.3s forwards; }
+.fade-in {
+    animation: fadeIn cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+}
+
+.fade-in-delay {
+    opacity: 0;
+    animation: fadeIn cubic-bezier(0.16, 1, 0.3, 1) 1.5s 0.3s forwards;
+}
 
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+/* ==========================================================================
+   6. 优化后的成员层级样式（暗黑极客版）
+   ========================================================================== */
+.pi-section {
+    margin-bottom: 4rem;
+    width: 100%;
+}
 
+/* 导师专属卡片：高规格，带有极弱的烈焰橙呼吸光晕 */
+.pi-card {
+    background: linear-gradient(135deg, #141419 0%, #111115 100%);
+    border: 1px solid rgba(255, 77, 32, 0.15);
+    border-radius: 16px;
+    padding: 3.5rem;
+    display: flex;
+    gap: 3.5rem;
+    align-items: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 77, 32, 0.02);
+    transition: all 0.4s ease;
+}
+
+.pi-card:hover {
+    border-color: var(--accent-fire);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 77, 32, 0.05);
+}
+
+.pi-card .pi-avatar-box {
+    width: 180px; /* 导师头像更大 */
+    height: 180px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--accent-fire), transparent);
+}
+
+.pi-info {
+    flex-grow: 1;
+}
+
+.pi-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-fire);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.pi-info h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.pi-title {
+    font-size: 1.05rem;
+    color: #fff;
+    opacity: 0.9;
+    margin-bottom: 1.2rem;
+}
+
+.pi-bio {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 700px;
+}
+
+/* 学生阶梯专区（博士/硕士） */
+.student-tier {
+    margin-top: 3.5rem;
+}
+
+.tier-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.8rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 带有科技感的斜杠装饰 */
+.tier-title span {
+    color: var(--accent-ai);
+    font-weight: 800;
+}
+
+/* 学生卡片排列网格 */
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+/* 研究生卡片：相比导师更轻量、内敛 */
+.member-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2.2rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.member-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.member-avatar-box {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.2rem auto;
+    position: relative;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--border-color), transparent);
+    transition: background 0.3s;
+}
+
+.member-card:hover .member-avatar-box {
+    background: linear-gradient(135deg, var(--accent-ai), transparent);
+}
+
+.member-avatar {
+    width: 100%;
+    height: 100%;
+    background: #191920;
+    border-radius: 50%;
+}
+
+.member-card h4 {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.member-title {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+/* 响应式适配：手机端时导师卡片自动变成上下结构 */
 @media (max-width: 768px) {
-    .pi-card { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; gap: 1.5rem; }
-    .pi-bio { margin: 0 auto; }
+    .pi-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        gap: 1.5rem;
+    }
+    .pi-bio {
+        margin: 0 auto;
+    }
 }
