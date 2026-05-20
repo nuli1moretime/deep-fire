@@ -638,3 +638,67 @@ footer {
         margin: 0 auto;
     }
 }
+/* ==========================================================================
+   10. 右上角中英文切换按钮样式
+   ========================================================================== */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.lang-toggle-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-main);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px; /* 胶囊圆角 */
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.lang-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+/* 适配移动端：按钮在小屏幕下依然整齐 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .nav-right {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    nav a {
+        margin-left: 0 !important;
+    }
+}
+/* ==========================================================================
+   11. 电影级中英文切换转场动效
+   ========================================================================== */
+/* 让所有带有翻译属性的文本，都具备微秒级的多属性过渡能力 */
+[data-i18n] {
+    transition: 
+        opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+        transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* 当触发切换时，全站文本优雅淡出，并向下轻微沉淀 4px */
+.lang-switching [data-i18n] {
+    opacity: 0;
+    transform: translateY(4px);
+}
