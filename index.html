@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI + Combustion Lab | 课题组主页</title>
-    <!-- 引入外部样式表 -->
+    <title>Deep-Fire Lab | 中国科大火灾科学国家重点实验室课题组</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 导航栏 -->
     <header>
         <div class="nav-container">
-            <div class="logo">AI + <span>Combustion</span></div>
+            <div class="logo">Deep-<span>Fire</span></div>
             <div class="nav-right">
                 <nav>
                     <a href="#about" data-i18n="nav-about">团队简介</a>
@@ -21,130 +19,115 @@
                     <a href="#papers" data-i18n="nav-papers">发表论文</a>
                     <a href="#join" data-i18n="nav-join">招生计划</a>
                 </nav>
-                <!-- 右上角语言切换按钮 -->
                 <button id="lang-btn" class="lang-toggle-btn">EN</button>
             </div>
         </div>
     </header>
 
-    <!-- Hero 欢迎区域 -->
     <section id="hero">
         <div class="section-container">
             <div class="glow-sphere"></div>
             <div class="glow-sphere two"></div>
-            
-            <!-- 🔴 优化点：首屏入场动画（fade-in）加在外层 wrapper 上 -->
             <div class="fade-in">
-                <!-- 内部文字标签只纯粹负责 data-i18n 语言切换动效，不再被锁定 -->
-                <h1 data-i18n="hero-title">用人工智能<br><span class="gradient-text">重构燃烧科学。</span></h1>
+                <h1 data-i18n="hero-title">用理论建模与 AI 平台<br><span class="gradient-text">深度重构火灾安全。</span></h1>
             </div>
-            
-            <!-- 🔴 优化点：副标题同理包裹 -->
             <div class="fade-in-delay">
-                <p data-i18n="hero-desc">我们致力于将深度学习、物理驱动神经网络（PINN）与先进燃烧数值模拟相结合，探索下一代高效、清洁的能源转化与安全防控技术。</p>
+                <p data-i18n="hero-desc">依托中国科学技术大学火灾科学国家重点实验室，通过系列实验、理论建模与人工智能平台开发，深入探索商业复合材料的火灾行为与新型阻燃配方优化。</p>
             </div>
-            
-            <!-- 🔴 优化点：按钮同理包裹 -->
             <div class="fade-in-delay" style="margin-top: 3rem;">
                 <a href="#about" class="btn-primary" data-i18n="hero-btn">探索前沿</a>
             </div>
         </div>
     </section>
 
-    <!-- 团队简介 -->
     <section id="about">
         <div class="section-container">
             <h2 class="section-title" data-i18n="about-title">团队简介</h2>
             <p class="about-text" data-i18n="about-content">
-                本课题组聚焦于“AI + 燃烧科学”的前沿交叉研究。传统燃烧科学依赖于复杂的化学动力学与高昂的计算流体力学（CFD）模拟。我们通过引入先进的 AI 算法（如算子网络、流场预测等），打破传统计算瓶颈，实现对复杂燃烧动力学、火焰传播及工程热物理问题的快速、高精度建模与智能优化。
+                本课题组（Deep-Fire）依托中国科学技术大学火灾科学国家重点实验室。我们致力于通过系列实验、理论建模与先进人工智能（AI）平台的交叉研发，实现对商业复合材料火灾行为的深度理解，并针对安全、清洁、低成本的阻燃材料进行智能配方优化，打破传统材料试错瓶颈，开拓下一代工业火灾安全防控技术。
             </p>
         </div>
     </section>
 
-    <!-- 课题组新闻 -->
     <section id="news">
         <div class="section-container">
             <h2 class="section-title" data-i18n="news-title">新闻动态</h2>
             <div class="news-grid">
                 <div class="news-card">
                     <div class="news-date">2026.05.10</div>
-                    <h4 data-i18n="news-1-title">物理驱动神经网络（PINN）三维热传导研究被顶级期刊接收</h4>
-                    <p class="news-desc" data-i18n="news-1-desc">通过引入空间几何对称性先验，成功将三维瞬态火灾流场预测速度提升三个数量级。</p>
+                    <h4 data-i18n="news-1-title">研究突破：高压电弧下开关柜绝缘子阻燃配方研究发表于《Fire Technology》</h4>
+                    <p class="news-desc" data-i18n="news-1-desc">课题组深入探讨了高压电弧触发下绝缘材料的着火与自熄行为，成功优化了新型阻燃配方体系。</p>
                 </div>
                 <div class="news-card">
-                    <div class="news-date">2026.04.15</div>
-                    <h4 data-i18n="news-2-title">祝贺组内硕士研究生获得优秀毕业论文荣誉</h4>
-                    <p class="news-desc" data-i18n="news-2-desc">其毕业设计探讨了基于傅里叶算子网络（FNO）的垂直电缆燃烧数值加速算法。</p>
+                    <div class="news-date">2025.11.15</div>
+                    <h4 data-i18n="news-2-title">阻燃电缆火灾行为研究在《Fire Safety Journal》等顶刊连续发表</h4>
+                    <p class="news-desc" data-i18n="news-2-desc">博士生方倩等针对不同 ATH 含量的阻燃电缆，量化揭示了其在向上火焰传播过程中的溶胀、流动及内部传热机制。</p>
                 </div>
                 <div class="news-card">
-                    <div class="news-date">2026.03.01</div>
-                    <h4 data-i18n="news-3-title">课题组成功承办 AI 时代的工程热物理青年学者学术沙龙</h4>
-                    <p class="news-desc" data-i18n="news-3-desc">来自全球 20 余所高校的专家学者齐聚，共同探讨深度学习在燃烧动力学中的应用。</p>
+                    <div class="news-date">2024.08.01</div>
+                    <h4 data-i18n="news-3-title">课题组复合材料气泡破裂与炭化动力学耦合机制取得重要进展</h4>
+                    <p class="news-desc" data-i18n="news-3-desc">成功构建了定量耦合热解机制模型，为复合材料火灾演化预测提供了更精确的理论骨架。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 成员介绍 -->
     <section id="members">
         <div class="section-container">
             <h2 class="section-title" data-i18n="members-title">成员介绍</h2>
             
-            <!-- 1. 导师专区 -->
             <div class="pi-section">
                 <div class="pi-card">
                     <div class="pi-avatar-box">
-                        <div class="member-avatar"></div>
+                        <div class="member-avatar" style="background-image: url('pi-photo.jpg'); background-size: cover; background-position: center;"></div>
                     </div>
                     <div class="pi-info">
                         <div class="pi-tag">Principal Investigator</div>
-                        <h3 data-i18n="pi-name">导师姓名</h3>
-                        <p class="pi-title" data-i18n="pi-title">教授 / 博士生导师</p>
-                        <p class="pi-bio" data-i18n="pi-bio">主要研究方向为物理驱动深度学习、三维瞬态火灾流场预测及工程热物理智能优化。主持多项国家级科研项目，在 Combustion and Flame 等顶级期刊发表论文数十篇。</p>
+                        <h3 data-i18n="pi-name">谢启源</h3>
+                        <p class="pi-title" data-i18n="pi-title">教授 / 博士生导师 · 中国科大火灾科学国家重点实验室</p>
+                        <p class="pi-bio" data-i18n="pi-bio">教授，博士生导师，美国北卡罗来纳大学访问学者。现任国际知名SCI期刊《Journal of Thermal Analysis and Calorimetry》副主编、中国消防协会防火材料分会副主任委员、中国运筹学会可靠性分会理事。作为项目负责人，主持科技部“十四五”国家重点研发计划课题、多项国家自然科学基金面上项目。长期致力于高聚物特殊燃烧、阻燃电缆引燃特性、高压电弧引燃及系统安全分析方法等方向。</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 2. 博士研究生专区 -->
             <div class="student-tier">
                 <h3 class="tier-title"><span>/</span> <span data-i18n="tier-phd">博士研究生</span></h3>
                 <div class="member-grid">
                     <div class="member-card">
                         <div class="member-avatar-box"><div class="member-avatar"></div></div>
-                        <h4 data-i18n="phd-1-name">成员 A</h4>
-                        <p class="member-title" data-i18n="phd-1-title">2024级 博士生</p>
+                        <h4 data-i18n="phd-1-name">何灿星</h4>
+                        <p class="member-title" data-i18n="phd-1-title">博士研究生 · 阻燃复合材料火焰传播机制</p>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar-box"><div class="member-avatar"></div></div>
-                        <h4 data-i18n="phd-2-name">成员 B</h4>
-                        <p class="member-title" data-i18n="phd-2-title">2025级 博士生</p>
+                        <h4 data-i18n="phd-2-name">方谦</h4>
+                        <p class="member-title" data-i18n="phd-2-title">博士研究生 · 电缆火灾传热与热解模拟</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. 硕士研究生专区 -->
             <div class="student-tier">
                 <h3 class="tier-title"><span>/</span> <span data-i18n="tier-master">硕士研究生</span></h3>
                 <div class="member-grid">
                     <div class="member-card">
                         <div class="member-avatar-box"><div class="member-avatar"></div></div>
-                        <h4 data-i18n="m-1-name">成员 C</h4>
-                        <p class="member-title" data-i18n="m-1-title">2024级 硕士生</p>
+                        <h4 data-i18n="m-1-name">刘羽琦</h4>
+                        <p class="member-title" data-i18n="m-1-title">硕士研究生</p>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar-box"><div class="member-avatar"></div></div>
-                        <h4 data-i18n="m-2-name">成员 D</h4>
-                        <p class="member-title" data-i18n="m-2-title">2024级 硕士生</p>
+                        <h4 data-i18n="m-2-name">朱宇喆</h4>
+                        <p class="member-title" data-i18n="m-2-title">硕士研究生</p>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar-box"><div class="member-avatar"></div></div>
-                        <h4 data-i18n="m-3-name">成员 E</h4>
-                        <p class="member-title" data-i18n="m-3-title">2025级 硕士生</p>
+                        <h4 data-i18n="m-3-name">邹红宇</h4>
+                        <p class="member-title" data-i18n="m-3-title">硕士研究生</p>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar-box"><div class="member-avatar"></div></div>
-                        <h4 data-i18n="m-4-name">成员 F</h4>
-                        <p class="member-title" data-i18n="m-4-title">2025级 硕士生</p>
+                        <h4 data-i18n="m-4-name">杜彦薇</h4>
+                        <p class="member-title" data-i18n="m-4-title">硕士研究生</p>
                     </div>
                 </div>
             </div>
@@ -152,53 +135,60 @@
         </div>
     </section>
 
-    <!-- 发表论文 -->
     <section id="papers">
         <div class="section-container">
             <h2 class="section-title" data-i18n="papers-title">发表论文</h2>
             <ul class="paper-list">
                 <li class="paper-item">
-                    <div class="paper-tags">Combustion and Flame • 2026</div>
-                    <p class="paper-title-text">Physics-Informed Neural Operators for Predicting 3D Unsteady Turbulent Flame Propagation</p>
-                    <p class="paper-authors">San Zhang, Si Li, Professor Name*</p>
-                    <div class="paper-links">
-                        <a href="#" class="paper-link-btn">[PDF]</a>
-                        <a href="#" class="paper-link-btn">[Code]</a>
-                        <a href="#" class="paper-link-btn">[DOI]</a>
-                    </div>
+                    <div class="paper-tags">Fire Technology • 2026</div>
+                    <p class="paper-title-text">Fire Resistance of Insulators in Switchgear by High-voltage Arcing: Flame-retardant Formula, Ignition and Self-sustained Burning</p>
+                    <p class="paper-authors">Yuqi Liu, Meijie Ren, Siqi Song, Qiyuan Xie*</p>
+                    <div class="paper-links"><a href="#" class="paper-link-btn">[PDF]</a><a href="#" class="paper-link-btn">[DOI]</a></div>
                 </li>
                 <li class="paper-item">
-                    <div class="paper-tags">Proceedings of the Combustion Institute • 2025</div>
-                    <p class="paper-title-text">Deep Learning-Based Accelerated Chemistry Solver for Confined Space Fire Simulations</p>
-                    <p class="paper-authors">Si Li, San Zhang, Professor Name*</p>
-                    <div class="paper-links">
-                        <a href="#" class="paper-link-btn">[PDF]</a>
-                        <a href="#" class="paper-link-btn">[Publisher Site]</a>
-                    </div>
+                    <div class="paper-tags">Fire Safety Journal • 2025</div>
+                    <p class="paper-title-text">Upward flame spread of flame-retardant cables with different ATH contents: Ignition, swelling and flowing</p>
+                    <p class="paper-authors">Qian Fang, Xiongjun Liu, Ye Yang, Xiao Han, Qiyuan Xie*</p>
+                    <div class="paper-links"><a href="#" class="paper-link-btn">[PDF]</a><a href="#" class="paper-link-btn">[DOI]</a></div>
+                </li>
+                <li class="paper-item">
+                    <div class="paper-tags">Journal of Thermal Analysis and Calorimetry • 2025</div>
+                    <p class="paper-title-text">Roles of ATH particle size in fire performance of FR‑cable jacket: pyrolysis, ignition and burning behaviors</p>
+                    <p class="paper-authors">Xiongjun Liu, Qing Shen, Canxing He, Ye Yang, Qiyuan Xie*</p>
+                    <div class="paper-links"><a href="#" class="paper-link-btn">[DOI]</a></div>
+                </li>
+                <li class="paper-item">
+                    <div class="paper-tags">Polymer Degradation and Stability • 2024</div>
+                    <p class="paper-title-text">A Quantitative Coupling Pyrolysis Mechanism Modeling of Flame-retardant Composites and their Bubbling, Breaking, Charring Behaviors</p>
+                    <p class="paper-authors">Ye Yang, Xiongjun Liu, Xiao Han, Yanwei Ding*, Qiyuan Xie*</p>
+                    <div class="paper-links"><a href="#" class="paper-link-btn">[PDF]</a></div>
+                </li>
+                <li class="paper-item">
+                    <div class="paper-tags">Combustion and Flame • 2021</div>
+                    <p class="paper-title-text">Fire Zone Diagram of Flame-Retardant Cables: Ignition and Upward Flame Spread</p>
+                    <p class="paper-authors">Qiyuan Xie*, Tai Gong, Xinyan Huang</p>
+                    <div class="paper-links"><a href="#" class="paper-link-btn">[Publisher Link]</a></div>
                 </li>
             </ul>
         </div>
     </section>
 
-    <!-- 招生计划 -->
     <section id="join">
         <div class="section-container">
             <div class="join-box">
                 <div class="join-glow"></div>
                 <h3 data-i18n="join-title">期待你的加入</h3>
-                <p data-i18n="join-desc">课题组每年招收博士研究生 1-2 名，硕士研究生 2-3 名。欢迎具有工程热物理、安全工程、计算机科学、应用数学等背景的同学联系报考。</p>
-                <p class="join-dir" data-i18n="join-dir"><strong>核心研究方向：</strong> 物理驱动深度学习（PINN/FNO）、复杂动力学高效燃烧模拟、火灾安全智能防控。</p>
-                <p class="contact-info" data-i18n="join-contact">联系方式：pi_email@university.edu.cn (邮件请附带个人简历及成绩单)</p>
+                <p data-i18n="join-desc">课题组（Deep-Fire Lab）每年在火灾科学国家重点实验室招收高水平博士研究生 1-2 名，硕士研究生 2-3 名。欢迎具有工程热物理、安全工程、工程力学、计算机科学与大数据应用数学等背景的同学联系报考。</p>
+                <p class="join-dir" id="join-dir" data-i18n="join-dir"><strong>核心研究方向：</strong> 高聚物材料特殊燃烧蔓延机理、阻燃电缆引慢特性与检测技术、高压电弧引燃有机阻燃绝缘件、系统安全分析方法与优化设计、核电站危险源辨识与事故演化、安全文化与本质安全（结合实验、理论建模与 AI 平台开发）。</p>
+                <p class="contact-info" data-i18n="join-contact">联系方式：xqy@ustc.edu.cn (邮件请附带个人简历及本科/硕士成绩单)</p>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
     <footer>
-        <p>© 2026 AI + Combustion Lab. All Rights Reserved.</p>
+        <p>© 2026 Deep-Fire Lab (USTC). All Rights Reserved.</p>
     </footer>
 
-    <!-- 引入外部脚本 -->
     <script src="script.js"></script>
 </body>
 </html>
