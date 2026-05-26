@@ -52,23 +52,39 @@
     <section id="news">
         <div class="section-container">
             <h2 class="section-title" data-i18n="news-title">新闻动态</h2>
-            <div class="news-grid">
-                <div class="news-card">
-                    <div class="news-date">2026.05.10</div>
-                    <h4 data-i18n="news-1-title">研究突破：高压电弧下开关柜绝缘子阻燃配方研究发表于《Fire Technology》</h4>
-                    <p class="news-desc" data-i18n="news-1-desc">课题组深入探讨了高压电弧触发下绝缘材料的着火与自熄行为，成功优化了新型阻燃配方体系。</p>
+            
+            <div class="news-slider-container">
+                <button class="slider-btn prev-btn" id="news-prev" aria-label="Previous news">←</button>
+                
+                <div class="news-slider-wrapper">
+                    <div class="news-slider-track">
+                        
+                        <div class="news-card">
+                            <div class="news-date">2026.05.10</div>
+                            <h4 data-i18n="news-1-title">研究突破：高压电弧下开关柜绝缘子阻燃配方研究发表于《Fire Technology》</h4>
+                            <p class="news-desc" data-i18n="news-1-desc">课题组深入探讨了高压电弧触发下绝缘材料的着火与自熄行为，成功优化了新型阻燃配方体系。</p>
+                        </div>
+                        
+                        <div class="news-card">
+                            <div class="news-date">2025.11.15</div>
+                            <h4 data-i18n="news-2-title">阻燃电缆火灾行为研究在《Fire Safety Journal》等期刊发表</h4>
+                            <p class="news-desc" data-i18n="news-2-desc">博士生方谦等针对不同 ATH 含量的阻燃电缆，量化揭示了其在向上火焰传播过程中的溶胀、流动及内部传热机制。</p>
+                        </div>
+                        
+                        <div class="news-card">
+                            <div class="news-date">2024.08.01</div>
+                            <h4 data-i18n="news-3-title">课题组复合材料气泡破裂与炭化动力学耦合机制取得重要进展</h4>
+                            <p class="news-desc" data-i18n="news-3-desc">成功构建了定量耦合热解机制模型，为复合材料火灾演化预测提供了更精确的理论骨架。</p>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="news-card">
-                    <div class="news-date">2025.11.15</div>
-                    <h4 data-i18n="news-2-title">阻燃电缆火灾行为研究在《Fire Safety Journal》等顶刊连续发表</h4>
-                    <p class="news-desc" data-i18n="news-2-desc">博士生方谦等针对不同 ATH 含量的阻燃电缆，量化揭示了其在向上火焰传播过程中的溶胀、流动及内部传热机制。</p>
-                </div>
-                <div class="news-card">
-                    <div class="news-date">2024.08.01</div>
-                    <h4 data-i18n="news-3-title">课题组复合材料气泡破裂与炭化动力学耦合机制取得重要进展</h4>
-                    <p class="news-desc" data-i18n="news-3-desc">成功构建了定量耦合热解机制模型，为复合材料火灾演化预测提供了更精确的理论骨架。</p>
-                </div>
+                
+                <button class="slider-btn next-btn" id="news-next" aria-label="Next news">→</button>
             </div>
+            
+            <div class="slider-dots" id="news-dots"></div>
+
         </div>
     </section>
 
@@ -110,22 +126,22 @@
                 <h3 class="tier-title"><span>/</span> <span data-i18n="tier-master">硕士研究生</span></h3>
                 <div class="member-grid">
                     <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('lyq-photo.jpg'); background-size: cover; background-position: center;"></div></div>
+                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('lyq-photo.jpg'); background-size: 80%; background-position: center;"></div></div>
                         <h4 data-i18n="m-1-name">刘羽琦</h4>
                         <p class="member-title" data-i18n="m-1-title">硕士研究生</p>
                     </div>
                     <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('zyz-photo.jpg'); background-size: 125%; background-position: center;"></div></div>
+                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('zyz-photo.jpg'); background-size: 280%; background-position: 52% 42%;"></div></div>
                         <h4 data-i18n="m-2-name">朱宇喆</h4>
                         <p class="member-title" data-i18n="m-2-title">硕士研究生</p>
                     </div>
                     <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('zhy-photo.jpg'); background-size: cover; background-position: center;"></div></div>
+                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('zhy-photo.jpg'); background-size: 80%; background-position: center;"></div></div>
                         <h4 data-i18n="m-3-name">邹红宇</h4>
                         <p class="member-title" data-i18n="m-3-title">硕士研究生</p>
                     </div>
                     <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('dyw-photo.jpg'); background-size: cover; background-position: center;"></div></div>
+                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('dyw-photo.jpg'); background-size: 80%; background-position: center;"></div></div>
                         <h4 data-i18n="m-4-name">杜彦薇</h4>
                         <p class="member-title" data-i18n="m-4-title">硕士研究生</p>
                     </div>
@@ -141,33 +157,28 @@
             <ul class="paper-list">
                 <li class="paper-item">
                     <div class="paper-tags">Fire Technology • 2026</div>
-                    <p class="paper-title-text">Fire Resistance of Insulators in Switchgear by High-voltage Arcing: Flame-retardant Formula, Ignition and Self-sustained Burning</p>
+                    <a href="https://doi.org/10.1007/s10694-025-01842-7" target="_blank" class="paper-title-text">Fire Resistance of Insulators in Switchgear by High-voltage Arcing: Flame-retardant Formula, Ignition and Self-sustained Burning</a>
                     <p class="paper-authors">Yuqi Liu, Meijie Ren, Siqi Song, Qiyuan Xie*</p>
-                    <div class="paper-links"><a href="#" class="paper-link-btn">[PDF]</a><a href="#" class="paper-link-btn">[DOI]</a></div>
                 </li>
                 <li class="paper-item">
                     <div class="paper-tags">Fire Safety Journal • 2025</div>
-                    <p class="paper-title-text">Upward flame spread of flame-retardant cables with different ATH contents: Ignition, swelling and flowing</p>
+                    <a href="https://doi.org/10.1016/j.firesaf.2025.104428" target="_blank" class="paper-title-text">Upward flame spread of flame-retardant cables with different ATH contents: Ignition, swelling and flowing</a>
                     <p class="paper-authors">Qian Fang, Xiongjun Liu, Ye Yang, Xiao Han, Qiyuan Xie*</p>
-                    <div class="paper-links"><a href="#" class="paper-link-btn">[PDF]</a><a href="#" class="paper-link-btn">[DOI]</a></div>
                 </li>
                 <li class="paper-item">
                     <div class="paper-tags">Journal of Thermal Analysis and Calorimetry • 2025</div>
-                    <p class="paper-title-text">Roles of ATH particle size in fire performance of FR‑cable jacket: pyrolysis, ignition and burning behaviors</p>
+                    <a href="https://doi.org/10.1007/s10973-025-13996-1" target="_blank" class="paper-title-text">Roles of ATH particle size in fire performance of FR‑cable jacket: pyrolysis, ignition and burning behaviors</a>
                     <p class="paper-authors">Xiongjun Liu, Qing Shen, Canxing He, Ye Yang, Qiyuan Xie*</p>
-                    <div class="paper-links"><a href="#" class="paper-link-btn">[DOI]</a></div>
                 </li>
                 <li class="paper-item">
                     <div class="paper-tags">Polymer Degradation and Stability • 2024</div>
-                    <p class="paper-title-text">A Quantitative Coupling Pyrolysis Mechanism Modeling of Flame-retardant Composites and their Bubbling, Breaking, Charring Behaviors</p>
+                    <a href="https://doi.org/10.1016/j.polymdegradstab.2023.110642" target="_blank" class="paper-title-text">A Quantitative Coupling Pyrolysis Mechanism Modeling of Flame-retardant Composites and their Bubbling, Breaking, Charring Behaviors</a>
                     <p class="paper-authors">Ye Yang, Xiongjun Liu, Xiao Han, Yanwei Ding*, Qiyuan Xie*</p>
-                    <div class="paper-links"><a href="#" class="paper-link-btn">[PDF]</a></div>
                 </li>
                 <li class="paper-item">
                     <div class="paper-tags">Combustion and Flame • 2021</div>
-                    <p class="paper-title-text">Fire Zone Diagram of Flame-Retardant Cables: Ignition and Upward Flame Spread</p>
+                    <a href="https://doi.org/10.1007/s10694-021-01133-x" target="_blank" class="paper-title-text">Fire Zone Diagram of Flame-Retardant Cables: Ignition and Upward Flame Spread</a>
                     <p class="paper-authors">Qiyuan Xie*, Tai Gong, Xinyan Huang</p>
-                    <div class="paper-links"><a href="#" class="paper-link-btn">[Publisher Link]</a></div>
                 </li>
             </ul>
         </div>
