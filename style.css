@@ -256,24 +256,44 @@ section {
 /* ==========================================================================
    5. 悬浮发光新闻卡片
    ========================================================================== */
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+.news-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.news-slider-wrapper {
+    width: 100%;
+    overflow: hidden; /* 隐藏超出视窗的新闻 */
+    padding: 1.5rem 0.5rem;
+}
+
+.news-slider-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
 }
 
 .news-card {
+    /* 大屏默认一排显示3个新闻卡片 */
+    flex: 0 0 100%; 
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     padding: 2.5rem;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px; /* 锁定卡片高度保持绝对整齐 */
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .news-card:hover {
     transform: translateY(-6px);
     border-color: rgba(255, 77, 32, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 77, 32, 0.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    background: #141419;
 }
 
 .news-date {
@@ -285,15 +305,55 @@ section {
 }
 
 .news-card h4 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin-bottom: 0.75rem;
     font-weight: 600;
+    line-height: 1.4;
+    color: #fff;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .news-desc {
     color: var(--text-muted);
     font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: auto; /* 文本自适应推至底部 */
 }
+
+/* 左右翻页赛博玻璃按钮 */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(18, 18, 22, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: var(--accent-fire);
+    border-color: var(--accent-fire);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 77, 32, 0.4);
+}
+
+.prev-btn { left: -25px; }
+.next-btn { right: -25px; }
 
 /* ==========================================================================
    6. 工业风成员板块
@@ -383,6 +443,18 @@ section {
     font-size: 1.15rem;
     margin: 0.5rem 0;
     color: #fff;
+    
+    /* 🔴 核心优化：彻底干掉标准的超链接下划线，并将其转为块级元素方便点击 */
+    text-decoration: none; 
+    display: block; 
+    
+    /* 丝滑的变色过渡时间 */
+    transition: color 0.25s ease; 
+}
+
+/* 🔴 交互高光：当鼠标悬浮在论文标题上时，文字极为优雅地变成“烈焰橙”，暗示用户可以点击跳转 */
+.paper-title-text:hover {
+    color: var(--accent-fire);
 }
 
 .paper-authors {
@@ -701,4 +773,235 @@ footer {
 .lang-switching [data-i18n] {
     opacity: 0;
     transform: translateY(4px);
+}
+
+/* ==========================================================================
+   12. Mobile refinements
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .nav-container {
+        align-items: flex-start;
+        gap: 0.85rem;
+    }
+
+    .nav-right {
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    nav {
+        display: flex;
+        flex: 1;
+        gap: 0.55rem;
+        overflow-x: auto;
+        padding-bottom: 0.2rem;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    nav a {
+        flex: 0 0 auto;
+        margin-left: 0;
+        padding: 0.42rem 0.66rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 0.84rem;
+        line-height: 1;
+    }
+
+    nav a.active {
+        border-color: rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-size: 24px 24px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        padding: 0.85rem 1rem;
+    }
+
+    .logo {
+        font-size: 1.15rem;
+    }
+
+    .lang-toggle-btn {
+        flex: 0 0 auto;
+        padding: 0.38rem 0.68rem;
+        font-size: 0.76rem;
+    }
+
+    section {
+        padding: 5.5rem 0 4rem 0;
+        scroll-margin-top: 112px;
+    }
+
+    .section-container {
+        padding: 0 1rem;
+    }
+
+    #hero {
+        height: auto;
+        min-height: 620px;
+        padding-top: 8rem;
+        align-items: flex-start;
+    }
+
+    #hero h1 {
+        font-size: 2.25rem;
+        line-height: 1.18;
+        margin-bottom: 1.25rem;
+    }
+
+    #hero p {
+        font-size: 1rem;
+        line-height: 1.72;
+        margin-bottom: 2rem;
+    }
+
+    .glow-sphere {
+        width: 360px;
+        height: 360px;
+        right: -120px;
+        top: 95px;
+        opacity: 0.22;
+    }
+
+    .glow-sphere.two {
+        width: 300px;
+        height: 300px;
+        right: -100px;
+        top: 160px;
+        opacity: 0.16;
+    }
+
+    .section-title {
+        font-size: 1.55rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+        line-height: 1.78;
+    }
+
+    .news-grid,
+    .member-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .news-card,
+    .paper-item,
+    .member-card {
+        padding: 1.35rem;
+    }
+
+    .pi-card {
+        padding: 1.65rem 1.15rem;
+    }
+
+    .pi-card .pi-avatar-box {
+        width: 132px;
+        height: 132px;
+    }
+
+    .pi-info h3 {
+        font-size: 1.55rem;
+    }
+
+    .pi-title,
+    .pi-bio,
+    .paper-title-text,
+    .join-box p {
+        font-size: 0.95rem;
+    }
+
+    .paper-links {
+        flex-wrap: wrap;
+        gap: 0.9rem;
+    }
+
+    .join-box {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .join-box h3 {
+        font-size: 1.45rem;
+    }
+
+    footer {
+        padding: 2.5rem 1rem;
+    }
+}
+
+@media (max-width: 420px) {
+    #hero h1 {
+        font-size: 2rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    nav a {
+        font-size: 0.8rem;
+        padding: 0.38rem 0.55rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+/* ==========================================================================
+   12. 提示小圆点（赛博动感胶囊样式）
+   ========================================================================== */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    cursor: pointer;
+    /* 丝滑的变形与变色过渡 */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* 🔴 当前高亮的新闻点：横向延展拉伸为极具 Apple 质感的现代胶囊形状 */
+.dot.active {
+    background: var(--accent-fire);
+    width: 24px;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(255, 77, 32, 0.45);
 }
