@@ -158,4 +158,75 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('lang-switching');
         }, 250);
     });
+
+    // ==========================================
+    // 3. 新闻动态横向翻阅滑块驱动算法
+    // ==========================================
+    const track = document.querySelector('.news-slider-track');
+    const prevBtn = document.getElementById('news-prev');
+    const nextBtn = document.getElementById('news-next');
+    const dotsContainer = document.getElementById('news-dots');
+    const cards = document.querySelectorAll('.news-card');
+    
+    if (track && prevBtn && nextBtn && dotsContainer && cards.length > 0) {
+        let currentIndex = 0;
+        
+        // A. 全自动智能创建小圆点
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active'); // 默认高亮第一个
+            
+            // 点击小圆点也可以进行跨卡片直接跳转
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateSlider();
+            });
+            dotsContainer.appendChild(dot);
+        });
+        
+        // 固定单屏显示 1 张卡片
+        function getCardsPerView() { return 1; }
+        
+        // B. 核心更新渲染逻辑
+        function updateSlider() {
+            const cardsPerView = getCardsPerView();
+            const maxIndex = Math.max(0, cards.length - cardsPerView);
+            
+            // 🔴 无限循环破局点：侦测到越界就瞬间进行对端星际传送
+            if (currentIndex > maxIndex) currentIndex = 0;        // 最后一个的下一个 $\rightarrow$ 第一个
+            if (currentIndex < 0) currentIndex = maxIndex;        // 第一个的上一个 $\rightarrow$ 最后一个
+            
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = 24; 
+            
+            // 执行轨道三维位移
+            const moveAmount = currentIndex * (cardWidth + gap);
+            track.style.transform = `translate3d(-${moveAmount}px, 0, 0)`;
+            
+            // 🔴 保持双向箭头始终高亮且可点（取消禁用限制）
+            prevBtn.style.opacity = '1';
+            prevBtn.style.pointerEvents = 'auto';
+            nextBtn.style.opacity = '1';
+            nextBtn.style.pointerEvents = 'auto';
+            
+            // 🔴 联动更新小圆点的“呼吸胶囊”高亮状态
+            const allDots = document.querySelectorAll('.dot');
+            allDots.forEach((dot, idx) => {
+                if (idx === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // 绑定动作触发器
+        nextBtn.addEventListener('click', () => { currentIndex++; updateSlider(); });
+        prevBtn.addEventListener('click', () => { currentIndex--; updateSlider(); });
+        window.addEventListener('resize', updateSlider);
+        
+        // 初始化运行
+        updateSlider();
+    }
 });
