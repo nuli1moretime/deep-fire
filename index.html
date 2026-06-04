@@ -1,205 +1,554 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep-Fire Lab | 中国科大火灾科学国家重点实验室课题组</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deep-Fire Lab | 中国科学技术大学 · 火灾科学国家重点实验室</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">Deep-<span>Fire</span></div>
-            <div class="nav-right">
-                <nav>
-                    <a href="#about" data-i18n="nav-about">团队简介</a>
-                    <a href="#news" data-i18n="nav-news">新闻动态</a>
-                    <a href="#members" data-i18n="nav-members">成员介绍</a>
-                    <a href="#papers" data-i18n="nav-papers">发表论文</a>
-                    <a href="#join" data-i18n="nav-join">招生计划</a>
-                </nav>
-                <button id="lang-btn" class="lang-toggle-btn">EN</button>
-            </div>
-        </div>
-    </header>
+  <!-- ============================================================
+       Navigation — dark warm bar
+       ============================================================ -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <span class="logo-mark">D</span>
+        Deep-Fire Lab
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav-about">团队简介</a></li>
+        <li><a href="#news" data-i18n="nav-news">新闻动态</a></li>
+        <li><a href="#members" data-i18n="nav-members">成员介绍</a></li>
+        <li><a href="#publications" data-i18n="nav-papers">发表论文</a></li>
+        <li><a href="#recruitment" data-i18n="nav-join">招生计划</a></li>
+      </ul>
+      <button id="lang-btn" type="button" class="nav-lang">EN</button>
+    </div>
+  </nav>
 
-    <section id="hero">
-        <div class="section-container">
-            <div class="glow-sphere"></div>
-            <div class="glow-sphere two"></div>
-            <div class="fade-in">
-                <h1 data-i18n="hero-title">用理论建模与 AI 平台<br><span class="gradient-text">深度重构火灾安全。</span></h1>
-            </div>
-            <div class="fade-in-delay">
-                <p data-i18n="hero-desc">依托中国科学技术大学火灾科学国家重点实验室，通过系列实验、理论建模与人工智能平台开发，深入探索商业复合材料的火灾行为与新型阻燃配方优化。</p>
-            </div>
-            <div class="fade-in-delay" style="margin-top: 3rem;">
-                <a href="#about" class="btn-primary" data-i18n="hero-btn">探索前沿</a>
-            </div>
-        </div>
-    </section>
+  <div id="lang-content">
+  <main class="page-content">
 
-    <section id="about">
-        <div class="section-container">
-            <h2 class="section-title" data-i18n="about-title">团队简介</h2>
-            <p class="about-text" data-i18n="about-content">
-                本课题组（Deep-Fire）依托中国科学技术大学火灾科学国家重点实验室。我们致力于通过系列实验、理论建模与先进人工智能（AI）平台的交叉研发，实现对商业复合材料火灾行为的深度理解，并针对安全、清洁、低成本的阻燃材料进行智能配方优化，打破传统材料试错瓶颈，开拓下一代工业火灾安全防控技术。
+  <!-- ============================================================
+       Hero — dark warm with ember glow particles
+       ============================================================ -->
+  <section class="hero">
+    <canvas id="ember-canvas"></canvas>
+    <div class="container">
+      <div class="hero-badge anim-up">
+        <span class="dot"></span>
+        <span data-i18n="hero-badge">火灾科学国家重点实验室 · USTC</span>
+      </div>
+      <h1 class="anim-up anim-d1">
+        <span class="hero-line1" data-i18n="hero-title-line1">深入认识火灾演化机制</span>
+        <span class="hero-line-decor" aria-hidden="true">
+          <span class="hero-decor-diamond"></span>
+        </span>
+        <span class="hero-line2" data-i18n="hero-title-line2">构筑你我安全美好生活</span>
+      </h1>
+      <div class="anim-up anim-d2 hero-desc-wrapper">
+        <p class="hero-desc-block" data-i18n="hero-desc">
+          面向火灾安全防控关键，聚焦新材料与新场景的火灾动力学演化机制和防控核心技术，致力于基础科研与工程应用的有机合一。
+        </p>
+      </div>
+    </div>
+    <!-- Single scroll-down indicator -->
+    <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">
+      <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 10 12 16 18 10"/></svg>
+    </div>
+  </section>
+
+  <!-- Gradient transition bridge — dark hero → warm content -->
+  <div class="hero-bridge" aria-hidden="true"></div>
+  <!-- Decorative ember anchor line -->
+  <div class="hero-bridge-line" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       About
+       ============================================================ -->
+  <section id="about" class="section" style="padding-top: var(--space-2xl);">
+    <div class="section-heat"></div>
+    <div class="container">
+      <h2 class="section-title" data-i18n="about-title">团队简介</h2>
+      <div class="section-title-decor"></div>
+      <div class="about-full">
+        <div class="about-text">
+          <p data-i18n="about-p1">
+            Deep-Fire Lab 隶属于中国科学技术大学火灾科学国家重点实验室（SKLFS）。
+            课题组以跨学科视角整合实验燃烧诊断、理论建模与人工智能平台开发，
+            致力于揭示商用复合材料在真实火灾场景下的热解、引燃及火蔓延机理。
+          </p>
+          <p data-i18n="about-p2">
+            我们提出"理论建模 + AI 平台"双轮驱动的方法论，突破传统"试错"
+            实验模式的瓶颈，针对安全、清洁、低成本的阻燃材料进行智能配方优化，
+            为火灾安全工程提供可量化的预测工具与设计准则。
+          </p>
+        </div>
+
+        <div class="about-dir-label" data-i18n="label-approach">研究方向</div>
+        <div class="about-dir-divider"></div>
+
+        <div class="dir-cards-row">
+          <a href="#" class="dir-card-h">
+            <div class="dir-card-h-img">
+              <img src="images/image12.png" alt="Flame spread of FR cables" loading="lazy">
+              <span class="dir-card-h-num">01</span>
+            </div>
+            <div class="dir-card-h-body">
+              <h4 data-i18n="dir-1-title">阻燃电缆火蔓延研究</h4>
+              <p data-i18n="dir-1-desc">揭示电缆火焰竖直向上传播的宏观机理与关键影响因素，为电缆防火设计提供理论基础。</p>
+              <span class="dir-card-h-tag" data-i18n="dir-1-tag">火蔓延机制 · 电缆火灾安全</span>
+            </div>
+          </a>
+
+          <a href="#" class="dir-card-h">
+            <div class="dir-card-h-img">
+              <img src="images/image14.png" alt="Pyrolysis and charring analysis" loading="lazy">
+              <span class="dir-card-h-num">02</span>
+            </div>
+            <div class="dir-card-h-body">
+              <h4 data-i18n="dir-2-title">微观热解与鼓泡碳化</h4>
+              <p data-i18n="dir-2-desc">探究多组分材料在高温下的热解行为、气体鼓泡动力学及膨胀成炭的耦合发展过程。</p>
+              <span class="dir-card-h-tag" data-i18n="dir-2-tag">热解机理 · 鼓泡 · 成炭</span>
+            </div>
+          </a>
+
+          <a href="#" class="dir-card-h">
+            <div class="dir-card-h-img">
+              <img src="images/image15.png" alt="AI-driven formulation optimization" loading="lazy">
+              <span class="dir-card-h-num">03</span>
+            </div>
+            <div class="dir-card-h-body">
+              <h4 data-i18n="dir-3-title">AI 阻燃配方优化</h4>
+              <p data-i18n="dir-3-desc">突破传统"乱枪打鸟"试错模式，基于耦合阻燃机理实现"有的放矢"的智能阻燃配方预测。</p>
+              <span class="dir-card-h-tag" data-i18n="dir-3-tag">AI 预测 · 阻燃配方</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       News — carousel with pagination
+       ============================================================ -->
+  <section id="news" class="section section-alt warm-edge">
+    <div class="section-heat"></div>
+    <div class="container">
+      <h2 class="section-title" data-i18n="news-title">新闻动态</h2>
+      <div class="section-title-decor"></div>
+      <div class="news-carousel" data-news-current="0">
+        <div class="news-carousel-viewport">
+          <div class="news-carousel-track">
+            <div class="news-slide">
+              <div class="news-slide-image">
+                <div class="img-placeholder"></div>
+                <svg viewBox="0 0 280 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="ng1" cx="50%" cy="85%" r="65%">
+                      <stop offset="0%" stop-color="#D96C3B" stop-opacity="0.28"/>
+                      <stop offset="45%" stop-color="#C4552A" stop-opacity="0.12"/>
+                      <stop offset="100%" stop-color="#A04020" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="ng2" cx="30%" cy="90%" r="45%">
+                      <stop offset="0%" stop-color="#E8944A" stop-opacity="0.22"/>
+                      <stop offset="60%" stop-color="#D08040" stop-opacity="0.06"/>
+                      <stop offset="100%" stop-color="#B07030" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="ng3" cx="70%" cy="95%" r="40%">
+                      <stop offset="0%" stop-color="#F0A050" stop-opacity="0.18"/>
+                      <stop offset="50%" stop-color="#D09040" stop-opacity="0.06"/>
+                      <stop offset="100%" stop-color="#B08030" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <rect width="280" height="280" fill="url(#ng1)"/>
+                  <rect width="280" height="280" fill="url(#ng2)"/>
+                  <rect width="280" height="280" fill="url(#ng3)"/>
+                  <path d="M140 280 Q118 230 125 175 Q130 140 142 110 Q154 140 160 175 Q167 230 145 280Z" fill="oklch(62% 0.14 38 / 0.12)"/>
+                  <path d="M95 280 Q80 240 86 200 Q90 175 100 155 Q110 175 114 200 Q120 240 105 280Z" fill="oklch(58% 0.12 42 / 0.08)"/>
+                  <path d="M180 280 Q168 245 172 210 Q175 190 183 175 Q191 190 195 210 Q198 245 186 280Z" fill="oklch(55% 0.10 45 / 0.06)"/>
+                  <circle cx="147" cy="145" r="3.5" fill="oklch(72% 0.14 48 / 0.28)"/>
+                  <circle cx="128" cy="168" r="2.5" fill="oklch(68% 0.16 42 / 0.30)"/>
+                  <circle cx="163" cy="178" r="2" fill="oklch(75% 0.12 55 / 0.22)"/>
+                  <circle cx="137" cy="125" r="1.5" fill="oklch(80% 0.10 60 / 0.18)"/>
+                  <circle cx="112" cy="195" r="1.8" fill="oklch(65% 0.14 38 / 0.22)"/>
+                  <circle cx="172" cy="160" r="2.2" fill="oklch(70% 0.12 50 / 0.18)"/>
+                  <circle cx="155" cy="200" r="1.2" fill="oklch(78% 0.10 58 / 0.15)"/>
+                </svg>
+                <span class="news-image-tag" data-i18n="label-highlight">Research Highlight</span>
+              </div>
+              <div class="news-slide-content">
+                <time class="news-date" datetime="2026-05-10">2026.05.10</time>
+                <h3 data-i18n="news-1-title">开关柜绝缘阻燃配方研究发表于 <em>Fire Technology</em></h3>
+                <p data-i18n="news-1-desc">
+                  课题组关于高压电弧作用下开关柜绝缘材料阻燃配方的研究被
+                  <em>Fire Technology</em> 接收发表。系统评估了不同阻燃
+                  配方在高压电弧引燃条件下的耐火性能。
+                </p>
+              </div>
+            </div>
+            <div class="news-slide">
+              <div class="news-slide-image">
+                <div class="img-placeholder"></div>
+                <svg viewBox="0 0 280 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="ng1" cx="50%" cy="85%" r="65%">
+                      <stop offset="0%" stop-color="#D96C3B" stop-opacity="0.28"/>
+                      <stop offset="45%" stop-color="#C4552A" stop-opacity="0.12"/>
+                      <stop offset="100%" stop-color="#A04020" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="ng2" cx="30%" cy="90%" r="45%">
+                      <stop offset="0%" stop-color="#E8944A" stop-opacity="0.22"/>
+                      <stop offset="60%" stop-color="#D08040" stop-opacity="0.06"/>
+                      <stop offset="100%" stop-color="#B07030" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="ng3" cx="70%" cy="95%" r="40%">
+                      <stop offset="0%" stop-color="#F0A050" stop-opacity="0.18"/>
+                      <stop offset="50%" stop-color="#D09040" stop-opacity="0.06"/>
+                      <stop offset="100%" stop-color="#B08030" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <rect width="280" height="280" fill="url(#ng1)"/>
+                  <rect width="280" height="280" fill="url(#ng2)"/>
+                  <rect width="280" height="280" fill="url(#ng3)"/>
+                  <path d="M140 280 Q118 230 125 175 Q130 140 142 110 Q154 140 160 175 Q167 230 145 280Z" fill="oklch(62% 0.14 38 / 0.12)"/>
+                  <path d="M95 280 Q80 240 86 200 Q90 175 100 155 Q110 175 114 200 Q120 240 105 280Z" fill="oklch(58% 0.12 42 / 0.08)"/>
+                  <path d="M180 280 Q168 245 172 210 Q175 190 183 175 Q191 190 195 210 Q198 245 186 280Z" fill="oklch(55% 0.10 45 / 0.06)"/>
+                  <circle cx="147" cy="145" r="3.5" fill="oklch(72% 0.14 48 / 0.28)"/>
+                  <circle cx="128" cy="168" r="2.5" fill="oklch(68% 0.16 42 / 0.30)"/>
+                  <circle cx="163" cy="178" r="2" fill="oklch(75% 0.12 55 / 0.22)"/>
+                  <circle cx="137" cy="125" r="1.5" fill="oklch(80% 0.10 60 / 0.18)"/>
+                  <circle cx="112" cy="195" r="1.8" fill="oklch(65% 0.14 38 / 0.22)"/>
+                  <circle cx="172" cy="160" r="2.2" fill="oklch(70% 0.12 50 / 0.18)"/>
+                  <circle cx="155" cy="200" r="1.2" fill="oklch(78% 0.10 58 / 0.15)"/>
+                </svg>
+                <span class="news-image-tag" data-i18n="label-highlight">Research Highlight</span>
+              </div>
+              <div class="news-slide-content">
+                <time class="news-date" datetime="2025-11-15">2025.11.15</time>
+                <h3 data-i18n="news-2-title">阻燃电缆火蔓延行为研究发表于 <em>Fire Safety Journal</em></h3>
+                <p data-i18n="news-2-desc">
+                  博士研究生方谦为第一作者的研究发表于 <em>Fire Safety Journal</em>，
+                  定量揭示了不同 ATH 含量电缆在火蔓延过程中的膨胀、流动与内部
+                  传热机制。
+                </p>
+              </div>
+            </div>
+            <div class="news-slide">
+              <div class="news-slide-image">
+                <div class="img-placeholder"></div>
+                <svg viewBox="0 0 280 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="ng1" cx="50%" cy="85%" r="65%">
+                      <stop offset="0%" stop-color="#D96C3B" stop-opacity="0.28"/>
+                      <stop offset="45%" stop-color="#C4552A" stop-opacity="0.12"/>
+                      <stop offset="100%" stop-color="#A04020" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="ng2" cx="30%" cy="90%" r="45%">
+                      <stop offset="0%" stop-color="#E8944A" stop-opacity="0.22"/>
+                      <stop offset="60%" stop-color="#D08040" stop-opacity="0.06"/>
+                      <stop offset="100%" stop-color="#B07030" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="ng3" cx="70%" cy="95%" r="40%">
+                      <stop offset="0%" stop-color="#F0A050" stop-opacity="0.18"/>
+                      <stop offset="50%" stop-color="#D09040" stop-opacity="0.06"/>
+                      <stop offset="100%" stop-color="#B08030" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <rect width="280" height="280" fill="url(#ng1)"/>
+                  <rect width="280" height="280" fill="url(#ng2)"/>
+                  <rect width="280" height="280" fill="url(#ng3)"/>
+                  <path d="M140 280 Q118 230 125 175 Q130 140 142 110 Q154 140 160 175 Q167 230 145 280Z" fill="oklch(62% 0.14 38 / 0.12)"/>
+                  <path d="M95 280 Q80 240 86 200 Q90 175 100 155 Q110 175 114 200 Q120 240 105 280Z" fill="oklch(58% 0.12 42 / 0.08)"/>
+                  <path d="M180 280 Q168 245 172 210 Q175 190 183 175 Q191 190 195 210 Q198 245 186 280Z" fill="oklch(55% 0.10 45 / 0.06)"/>
+                  <circle cx="147" cy="145" r="3.5" fill="oklch(72% 0.14 48 / 0.28)"/>
+                  <circle cx="128" cy="168" r="2.5" fill="oklch(68% 0.16 42 / 0.30)"/>
+                  <circle cx="163" cy="178" r="2" fill="oklch(75% 0.12 55 / 0.22)"/>
+                  <circle cx="137" cy="125" r="1.5" fill="oklch(80% 0.10 60 / 0.18)"/>
+                  <circle cx="112" cy="195" r="1.8" fill="oklch(65% 0.14 38 / 0.22)"/>
+                  <circle cx="172" cy="160" r="2.2" fill="oklch(70% 0.12 50 / 0.18)"/>
+                  <circle cx="155" cy="200" r="1.2" fill="oklch(78% 0.10 58 / 0.15)"/>
+                </svg>
+                <span class="news-image-tag" data-i18n="label-highlight">Research Highlight</span>
+              </div>
+              <div class="news-slide-content">
+                <time class="news-date" datetime="2024-08-01">2024.08.01</time>
+                <h3 data-i18n="news-3-title">气泡破裂与成炭动力学耦合模型取得进展</h3>
+                <p data-i18n="news-3-desc">
+                  课题组建立了定量耦合热解机理模型，实现了对复合材料中气泡
+                  破裂与成炭动力学行为的预测，为提升火灾演化预测精度提供了
+                  理论基础。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="news-controls">
+          <button class="news-btn" id="news-prev" aria-label="上一则">‹</button>
+          <div class="news-dots">
+            <button class="news-dot active" data-index="0"></button>
+            <button class="news-dot" data-index="1"></button>
+            <button class="news-dot" data-index="2"></button>
+          </div>
+          <span class="news-counter"><span id="news-cur">01</span> / <span id="news-total">03</span></span>
+          <button class="news-btn" id="news-next" aria-label="下一则">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Members
+       ============================================================ -->
+  <section id="members" class="section warm-edge">
+    <div class="section-heat"></div>
+    <div class="container">
+      <h2 class="section-title" data-i18n="members-title">成员介绍</h2>
+      <div class="section-title-decor"></div>
+
+      <!-- PI -->
+      <div class="member-pi">
+        <div class="member-avatar"><img src="images/pi-photo.jpg" alt="谢启源" loading="lazy"></div>
+        <div class="member-info">
+          <h3 data-i18n="pi-name">谢启源</h3>
+          <div class="member-role" data-i18n="pi-role">博士生导师 · 火灾安全全国重点实验室教授</div>
+          <p class="member-bio" data-i18n="pi-bio">
+            科技部国家重点研发计划“基础科研条件与重大科学仪器设备研发”重点专项总体专家组成员、中国消防协会防火材料分会副主任委员、国际热分析期刊JTAC副主编等。主要研究兴趣:（阻燃电缆等）燃聚合材料的燃烧机制与优化设计、高压电弧成灾机制及安全文化等。
+          </p>
+          <div class="member-tags">
+            <span class="member-tag" data-i18n="pi-tag-1">安徽省科学技术一等奖</span>
+            <span class="member-tag" data-i18n="pi-tag-2">国家电网科技进步一等奖</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PhD Students -->
+      <div class="members-section-label" data-i18n="tier-phd">博士研究生</div>
+      <div class="members-grid" style="margin-bottom: var(--space-2xl);">
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/hcx-photo.jpg" alt="何灿星" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="phd-1-name">何灿星</h4>
+            <div class="member-label" data-i18n="phd-1-label">博士研究生</div>
+            <p class="member-topic" data-i18n="phd-1-topic">阻燃复合材料火蔓延机理研究</p>
+          </div>
+        </div>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/fq-photo.jpg" alt="方谦" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="phd-2-name">方谦</h4>
+            <div class="member-label" data-i18n="phd-2-label">博士研究生</div>
+            <p class="member-topic" data-i18n="phd-2-topic">电缆火灾传热与热解建模</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Master Students -->
+      <div class="members-section-label" data-i18n="tier-master">硕士研究生</div>
+      <div class="members-grid">
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/lyq-photo.jpg" alt="刘羽琦" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="m-1-name">刘羽琦</h4>
+            <div class="member-label" data-i18n="m-1-label">硕士研究生</div>
+          </div>
+        </div>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/zyz-photo.jpg" alt="朱宇喆" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="m-2-name">朱宇喆</h4>
+            <div class="member-label" data-i18n="m-2-label">硕士研究生</div>
+          </div>
+        </div>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/zhy-photo.jpg" alt="邹红宇" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="m-3-name">邹红宇</h4>
+            <div class="member-label" data-i18n="m-3-label">硕士研究生</div>
+          </div>
+        </div>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/dyw-photo.jpg" alt="杜彦薇" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="m-4-name">杜彦薇</h4>
+            <div class="member-label" data-i18n="m-4-label">硕士研究生</div>
+          </div>
+        </div>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/syl-photo.jpg" alt="石银领" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="m-5-name">石银领</h4>
+            <div class="member-label" data-i18n="m-5-label">硕士研究生</div>
+          </div>
+        </div>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/jzy-photo.jpg" alt="金志勇" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="m-6-name">金志勇</h4>
+            <div class="member-label" data-i18n="m-6-label">硕士研究生</div>
+          </div>
+        </div>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/zy-photo.jpg" alt="张洋" class="member-photo" loading="lazy">
+          </div>
+          <div class="member-card-body">
+            <h4 data-i18n="m-7-name">张洋</h4>
+            <div class="member-label" data-i18n="m-7-label">硕士研究生</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Publications
+       ============================================================ -->
+  <section id="publications" class="section section-alt warm-edge">
+    <div class="section-heat"></div>
+    <div class="container">
+      <h2 class="section-title" data-i18n="papers-title">发表论文</h2>
+      <div class="section-title-decor"></div>
+      <div class="pub-list">
+        <div class="pub-item">
+          <span class="pub-num">01</span>
+          <div class="pub-content">
+            <p class="pub-authors">Liu Y., Xie Q.*, et al.</p>
+            <p class="pub-title">Fire resistance of switchgear insulator flame-retardant formulations under high-voltage arcing</p>
+            <p class="pub-venue">
+              <span class="pub-year">2026</span>
+              <em>Fire Technology</em>
+              <a href="#" class="doi-link">DOI →</a>
             </p>
+          </div>
         </div>
-    </section>
-
-    <section id="news">
-        <div class="section-container">
-            <h2 class="section-title" data-i18n="news-title">新闻动态</h2>
-            
-            <div class="news-slider-container">
-                <button class="slider-btn prev-btn" id="news-prev" aria-label="Previous news">←</button>
-                
-                <div class="news-slider-wrapper">
-                    <div class="news-slider-track">
-                        
-                        <div class="news-card">
-                            <div class="news-date">2026.05.10</div>
-                            <h4 data-i18n="news-1-title">研究突破：高压电弧下开关柜绝缘子阻燃配方研究发表于《Fire Technology》</h4>
-                            <p class="news-desc" data-i18n="news-1-desc">课题组深入探讨了高压电弧触发下绝缘材料的着火与自熄行为，成功优化了新型阻燃配方体系。</p>
-                        </div>
-                        
-                        <div class="news-card">
-                            <div class="news-date">2025.11.15</div>
-                            <h4 data-i18n="news-2-title">阻燃电缆火灾行为研究在《Fire Safety Journal》等期刊发表</h4>
-                            <p class="news-desc" data-i18n="news-2-desc">博士生方谦等针对不同 ATH 含量的阻燃电缆，量化揭示了其在向上火焰传播过程中的溶胀、流动及内部传热机制。</p>
-                        </div>
-                        
-                        <div class="news-card">
-                            <div class="news-date">2024.08.01</div>
-                            <h4 data-i18n="news-3-title">课题组复合材料气泡破裂与炭化动力学耦合机制取得重要进展</h4>
-                            <p class="news-desc" data-i18n="news-3-desc">成功构建了定量耦合热解机制模型，为复合材料火灾演化预测提供了更精确的理论骨架。</p>
-                        </div>
-
-                    </div>
-                </div>
-                
-                <button class="slider-btn next-btn" id="news-next" aria-label="Next news">→</button>
-            </div>
-            
-            <div class="slider-dots" id="news-dots"></div>
-
+        <div class="pub-item">
+          <span class="pub-num">02</span>
+          <div class="pub-content">
+            <p class="pub-authors">Fang Q., Xie Q.*, et al.</p>
+            <p class="pub-title">Upward flame spread of flame-retardant cables with varying ATH content: swelling, flow, and internal heat transfer</p>
+            <p class="pub-venue">
+              <span class="pub-year">2025</span>
+              <em>Fire Safety Journal</em>
+              <a href="#" class="doi-link">DOI →</a>
+            </p>
+          </div>
         </div>
-    </section>
-
-    <section id="members">
-        <div class="section-container">
-            <h2 class="section-title" data-i18n="members-title">成员介绍</h2>
-            
-            <div class="pi-section">
-                <div class="pi-card">
-                    <div class="pi-avatar-box">
-                        <div class="member-avatar" style="background-image: url('pi-photo.jpg'); background-size: cover; background-position: center;"></div>
-                    </div>
-                    <div class="pi-info">
-                        <div class="pi-tag">Principal Investigator</div>
-                        <h3 data-i18n="pi-name">谢启源</h3>
-                        <p class="pi-title" data-i18n="pi-title">教授 / 博士生导师 · 中国科大火灾科学国家重点实验室</p>
-                        <p class="pi-bio" data-i18n="pi-bio">教授，博士生导师，美国北卡罗来纳大学访问学者。现任国际知名SCI期刊《Journal of Thermal Analysis and Calorimetry》副主编、中国消防协会防火材料分会副主任委员、中国运筹学会可靠性分会理事。作为项目负责人，主持科技部“十四五”国家重点研发计划课题、多项国家自然科学基金面上项目。长期致力于高聚物特殊燃烧、阻燃电缆引燃特性、高压电弧引燃及系统安全分析方法等方向。</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="student-tier">
-                <h3 class="tier-title"><span>/</span> <span data-i18n="tier-phd">博士研究生</span></h3>
-                <div class="member-grid">
-                    <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('hcx-photo.jpg'); background-size: 120%; background-position: center 70%;"></div></div>
-                        <h4 data-i18n="phd-1-name">何灿星</h4>
-                        <p class="member-title" data-i18n="phd-1-title">博士研究生 · 阻燃复合材料火焰传播机制</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('fq-photo.jpg'); background-size: cover; background-position: center;"></div></div>
-                        <h4 data-i18n="phd-2-name">方谦</h4>
-                        <p class="member-title" data-i18n="phd-2-title">博士研究生 · 电缆火灾传热与热解模拟</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="student-tier">
-                <h3 class="tier-title"><span>/</span> <span data-i18n="tier-master">硕士研究生</span></h3>
-                <div class="member-grid">
-                    <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('lyq-photo.jpg'); background-size: 80%; background-position: center;"></div></div>
-                        <h4 data-i18n="m-1-name">刘羽琦</h4>
-                        <p class="member-title" data-i18n="m-1-title">硕士研究生</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('zyz-photo.jpg'); background-size: 260%; background-position: 52% 42%;"></div></div>
-                        <h4 data-i18n="m-2-name">朱宇喆</h4>
-                        <p class="member-title" data-i18n="m-2-title">硕士研究生</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('zhy-photo.jpg'); background-size: 80%; background-position: center;"></div></div>
-                        <h4 data-i18n="m-3-name">邹红宇</h4>
-                        <p class="member-title" data-i18n="m-3-title">硕士研究生</p>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar-box"><div class="member-avatar" style="background-image: url('dyw-photo.jpg'); background-size: 80%; background-position: center;"></div></div>
-                        <h4 data-i18n="m-4-name">杜彦薇</h4>
-                        <p class="member-title" data-i18n="m-4-title">硕士研究生</p>
-                    </div>
-                </div>
-            </div>
-
+        <div class="pub-item">
+          <span class="pub-num">03</span>
+          <div class="pub-content">
+            <p class="pub-authors">Liu X., Xie Q.*, et al.</p>
+            <p class="pub-title">Effects of ATH particle size on pyrolysis, ignition, and burning of FR cable jacket</p>
+            <p class="pub-venue">
+              <span class="pub-year">2025</span>
+              <em>Journal of Thermal Analysis and Calorimetry</em>
+              <a href="#" class="doi-link">DOI →</a>
+            </p>
+          </div>
         </div>
-    </section>
-
-    <section id="papers">
-        <div class="section-container">
-            <h2 class="section-title" data-i18n="papers-title">发表论文</h2>
-            <ul class="paper-list">
-                <li class="paper-item">
-                    <div class="paper-tags">Fire Technology • 2026</div>
-                    <a href="https://doi.org/10.1007/s10694-025-01842-7" target="_blank" class="paper-title-text">Fire Resistance of Insulators in Switchgear by High-voltage Arcing: Flame-retardant Formula, Ignition and Self-sustained Burning</a>
-                    <p class="paper-authors">Yuqi Liu, Meijie Ren, Siqi Song, Qiyuan Xie*</p>
-                </li>
-                <li class="paper-item">
-                    <div class="paper-tags">Fire Safety Journal • 2025</div>
-                    <a href="https://doi.org/10.1016/j.firesaf.2025.104428" target="_blank" class="paper-title-text">Upward flame spread of flame-retardant cables with different ATH contents: Ignition, swelling and flowing</a>
-                    <p class="paper-authors">Qian Fang, Xiongjun Liu, Ye Yang, Xiao Han, Qiyuan Xie*</p>
-                </li>
-                <li class="paper-item">
-                    <div class="paper-tags">Journal of Thermal Analysis and Calorimetry • 2025</div>
-                    <a href="https://doi.org/10.1007/s10973-025-13996-1" target="_blank" class="paper-title-text">Roles of ATH particle size in fire performance of FR‑cable jacket: pyrolysis, ignition and burning behaviors</a>
-                    <p class="paper-authors">Xiongjun Liu, Qing Shen, Canxing He, Ye Yang, Qiyuan Xie*</p>
-                </li>
-                <li class="paper-item">
-                    <div class="paper-tags">Polymer Degradation and Stability • 2024</div>
-                    <a href="https://doi.org/10.1016/j.polymdegradstab.2023.110642" target="_blank" class="paper-title-text">A Quantitative Coupling Pyrolysis Mechanism Modeling of Flame-retardant Composites and their Bubbling, Breaking, Charring Behaviors</a>
-                    <p class="paper-authors">Ye Yang, Xiongjun Liu, Xiao Han, Yanwei Ding*, Qiyuan Xie*</p>
-                </li>
-                <li class="paper-item">
-                    <div class="paper-tags">Fire Technology • 2021</div>
-                    <a href="https://doi.org/10.1007/s10694-021-01133-x" target="_blank" class="paper-title-text">Fire Zone Diagram of Flame-Retardant Cables: Ignition and Upward Flame Spread</a>
-                    <p class="paper-authors">Qiyuan Xie*, Tai Gong, Xinyan Huang</p>
-                </li>
-            </ul>
+        <div class="pub-item">
+          <span class="pub-num">04</span>
+          <div class="pub-content">
+            <p class="pub-authors">Yang Y., Xie Q.*, et al.</p>
+            <p class="pub-title">Quantitative coupling pyrolysis mechanism modeling of flame-retardant composites with bubbling, breaking, and charring</p>
+            <p class="pub-venue">
+              <span class="pub-year">2024</span>
+              <em>Polymer Degradation and Stability</em>
+              <a href="#" class="doi-link">DOI →</a>
+            </p>
+          </div>
         </div>
-    </section>
-
-    <section id="join">
-        <div class="section-container">
-            <div class="join-box">
-                <div class="join-glow"></div>
-                <h3 data-i18n="join-title">期待你的加入</h3>
-                <p data-i18n="join-desc">课题组（Deep-Fire Lab）每年在火灾科学国家重点实验室招收高水平博士研究生 1-2 名，硕士研究生 2-3 名。欢迎具有工程热物理、安全工程、工程力学、计算机科学与大数据应用数学等背景的同学联系报考。</p>
-                <p class="join-dir" id="join-dir" data-i18n="join-dir"><strong>核心研究方向：</strong> 高聚物材料特殊燃烧蔓延机理、阻燃电缆引慢特性与检测技术、高压电弧引燃有机阻燃绝缘件、系统安全分析方法与优化设计、核电站危险源辨识与事故演化、安全文化与本质安全（结合实验、理论建模与 AI 平台开发）。</p>
-                <p class="contact-info" data-i18n="join-contact">联系方式：xqy@ustc.edu.cn (邮件请附带个人简历及本科/硕士成绩单)</p>
-            </div>
+        <div class="pub-item">
+          <span class="pub-num">05</span>
+          <div class="pub-content">
+            <p class="pub-authors">Xie Q.*, Gong T., Huang X.</p>
+            <p class="pub-title">Fire Zone Diagram of flame-retardant cables: ignition and upward flame spread</p>
+            <p class="pub-venue">
+              <span class="pub-year">2021</span>
+              <em>Fire Technology</em>
+              <a href="#" class="doi-link">DOI →</a>
+            </p>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="pub-more">
+        <a href="#" class="pub-more-link" data-i18n="papers-more">
+          <span>阅读更多论文</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>© 2026 Deep-Fire Lab (USTC). All Rights Reserved.</p>
-    </footer>
+  <!-- ============================================================
+       Recruitment
+       ============================================================ -->
+  <section id="recruitment" class="section warm-edge">
+    <div class="section-heat"></div>
+    <div class="container">
+      <h2 class="section-title" data-i18n="join-title">招生计划</h2>
+      <div class="section-title-decor"></div>
+      <div class="recruit-grid">
+        <div class="recruit-card">
+          <h3 data-i18n="join-card-phd-title">博士研究生</h3>
+          <div class="slots" data-i18n="join-card-phd-slots">1–2 名</div>
+          <p data-i18n="join-card-phd-desc">每年招收 1–2 名博士研究生，从事聚合物燃烧机理、电缆火灾安全、AI 驱动阻燃配方优化等前沿研究。</p>
+        </div>
+        <div class="recruit-card">
+          <h3 data-i18n="join-card-ms-title">硕士研究生</h3>
+          <div class="slots" data-i18n="join-card-ms-slots">2–3 名</div>
+          <p data-i18n="join-card-ms-desc">每年招收 2–3 名硕士研究生，欢迎具有以下学科背景的同学申请。</p>
+          <ul>
+            <li data-i18n="join-disc-1">工程热物理</li>
+            <li data-i18n="join-disc-2">安全科学与工程</li>
+            <li data-i18n="join-disc-3">工程力学</li>
+            <li data-i18n="join-disc-4">计算机科学</li>
+            <li data-i18n="join-disc-5">应用数学</li>
+          </ul>
+        </div>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="contact-box">
+        <p data-i18n="join-contact-title">欢迎有志于火灾安全研究的同学加入！请将个人简历及本科/硕士成绩单发送至：</p>
+        <a href="mailto:xqy@ustc.edu.cn" class="contact-email">xqy@ustc.edu.cn</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============================================================
+       Footer — matches hero dark
+       ============================================================ -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Deep-Fire Lab (USTC). All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="https://sklfs.ustc.edu.cn" target="_blank" rel="noopener">SKLFS</a>
+        <a href="https://www.ustc.edu.cn" target="_blank" rel="noopener" data-i18n="footer-ustc">中国科学技术大学</a>
+      </div>
+    </div>
+  </footer>
+  </div><!-- /lang-content -->
+
+  <script src="script.js"></script>
 </body>
 </html>
